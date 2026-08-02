@@ -100,14 +100,14 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
       <header className="border-b border-black/10 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 px-6 py-5 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <a href="#top" aria-label="Ketovore Canada home" className="block w-full max-w-[360px]">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-3 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+          <a href="#top" aria-label="Ketovore Canada home" className="block w-full max-w-[260px]">
             <Image
               src="/images/KC_horizontal_logo.webp"
               alt="Ketovore Canada — Transform, Educate, Inspire"
               width={1745}
               height={464}
-              sizes="360px"
+              sizes="260px"
               className="h-auto w-full"
               priority
             />
