@@ -88,7 +88,7 @@ export default function Home() {
         <div className="relative mx-auto grid min-h-[390px] max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-white/75">A practical path to better health</p>
-            <h1 className="mt-5 font-[family-name:var(--font-bebas)] text-5xl uppercase leading-[0.95] tracking-[0.02em] sm:text-7xl">
+            <h1 className="mt-5 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase leading-[0.95] tracking-[0.02em] sm:text-7xl">
               Carnivore first.
               <span className="block text-[#ba0a07]">Keto inspired.</span>
               Built for real life.
@@ -116,7 +116,7 @@ export default function Home() {
         <div className="min-w-0">
           <section id="about">
             <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Start here</p>
-            <h2 className="mt-3 font-[family-name:var(--font-bebas)] text-5xl uppercase tracking-[0.03em] sm:text-6xl">What is Ketovore?</h2>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em] sm:text-6xl">What is Ketovore?</h2>
             <p className="mt-5 max-w-3xl text-lg leading-8 text-black/65">
               Ketovore sits at the intersection of carnivore and keto: an animal-food-focused way of eating with very low carbohydrate intake, nourishing fats, and fewer complications. It is less about perfection and more about finding a sustainable approach that supports your health.
             </p>
@@ -126,7 +126,7 @@ export default function Home() {
             <div className="flex flex-col gap-6 border-b border-black/20 pb-5 sm:flex-row sm:items-end sm:justify-between">
               <div>
                 <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Explore</p>
-                <h2 className="mt-2 font-[family-name:var(--font-bebas)] text-5xl uppercase tracking-[0.03em]">Ketovore resources</h2>
+                <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Ketovore resources</h2>
               </div>
               <nav aria-label="Resource categories" className="flex flex-wrap gap-4 text-xs font-extrabold uppercase tracking-[0.15em] text-black/55">
                 <a href="#resources" className="text-[#ba0a07]">Listen</a>
@@ -141,7 +141,7 @@ export default function Home() {
                 <article key={item.title} className="group grid gap-5 border-b border-black/15 py-9 sm:grid-cols-[1fr_auto] sm:items-center">
                   <div>
                     <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-black/45">{item.type} · Ketovore Canada</p>
-                    <h3 className="mt-3 font-[family-name:var(--font-montserrat)] text-2xl font-extrabold leading-tight transition group-hover:text-[#ba0a07] sm:text-3xl">
+                    <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold leading-tight transition group-hover:text-[#ba0a07] sm:text-3xl">
                       {item.title}
                     </h3>
                     <p className="mt-3 max-w-3xl leading-7 text-black/60">{item.description}</p>
@@ -154,12 +154,12 @@ export default function Home() {
 
           <section id="updates" className="mt-20 scroll-mt-6">
             <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">The latest</p>
-            <h2 className="mt-2 font-[family-name:var(--font-bebas)] text-5xl uppercase tracking-[0.03em]">Notes from the journey</h2>
+            <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Notes from the journey</h2>
             <div className="mt-6 grid gap-5 md:grid-cols-2">
               {updates.map((item) => (
                 <article key={item.title} className="border-t-4 border-[#ba0a07] bg-white p-7 shadow-sm">
                   <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">{item.label}</p>
-                  <h3 className="mt-4 font-[family-name:var(--font-montserrat)] text-xl font-extrabold leading-snug">{item.title}</h3>
+                  <h3 className="mt-4 font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug">{item.title}</h3>
                   <p className="mt-4 leading-7 text-black/60">{item.description}</p>
                 </article>
               ))}
@@ -170,7 +170,7 @@ export default function Home() {
         <aside className="space-y-10">
           <section id="newsletter" className="bg-black p-7 text-white shadow-lg shadow-black/10">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Free newsletter</p>
-            <h2 className="mt-3 font-[family-name:var(--font-montserrat)] text-xl font-extrabold">Practical insights in your inbox.</h2>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-xl font-extrabold">Practical insights in your inbox.</h2>
             <p className="mt-3 text-sm leading-6 text-white/65">New resources, progress notes, and honest reflections as they are published.</p>
             <a href="mailto:hello@ketovorecanada.com?subject=Ketovore%20Canada%20Newsletter" className="mt-6 flex w-full justify-center bg-[#ba0a07] px-4 py-3 text-sm font-extrabold text-white transition hover:bg-white hover:text-black">
               Join the newsletter
@@ -180,13 +180,13 @@ export default function Home() {
 
           <section id="journey" className="scroll-mt-6 border-t-4 border-black pt-5">
             <div className="flex items-end justify-between gap-4">
-              <h2 className="font-[family-name:var(--font-bebas)] text-3xl uppercase tracking-[0.04em]">Rick&apos;s journey</h2>
+              <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-[0.04em]">Rick&apos;s journey</h2>
               <span className="bg-black px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">Personal</span>
             </div>
             <div className="mt-4">
               {journey.map((item, index) => (
                 <div key={item.title} className="grid grid-cols-[28px_1fr] gap-3 border-b border-black/15 py-4">
-                  <span className="font-[family-name:var(--font-bebas)] text-xl text-[#ba0a07]">{String(index + 1).padStart(2, "0")}</span>
+                  <span className="font-[family-name:var(--font-display)] text-xl font-bold text-[#ba0a07]">{String(index + 1).padStart(2, "0")}</span>
                   <div>
                     <h3 className="font-extrabold">{item.title}</h3>
                     <p className="mt-1 text-sm text-black/50">{item.detail}</p>
@@ -198,7 +198,7 @@ export default function Home() {
 
           <section className="border-t-4 border-[#ba0a07] pt-5">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Daily log</p>
-            <h2 className="mt-3 font-[family-name:var(--font-bebas)] text-3xl uppercase tracking-[0.04em]">The full picture, tracked honestly.</h2>
+            <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-[0.04em]">The full picture, tracked honestly.</h2>
             <div className="mt-5 grid grid-cols-2 gap-px bg-black/15 border border-black/15">
               {['Weight', 'Insulin', 'Steps', 'Food', 'Gym', 'Photos'].map((item) => (
                 <div key={item} className="bg-white p-4 text-sm font-extrabold">{item}</div>
@@ -208,7 +208,7 @@ export default function Home() {
 
           <section className="border-t-4 border-black pt-5">
             <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">The focus</p>
-            <blockquote className="mt-4 font-[family-name:var(--font-bebas)] text-3xl uppercase leading-tight tracking-[0.03em]">
+            <blockquote className="mt-4 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-tight tracking-[0.03em]">
               “Transform. Educate. Inspire.”
             </blockquote>
             <p className="mt-3 text-sm leading-6 text-black/55">Real food, honest measurement, and useful lessons from one Canadian&apos;s health journey.</p>
