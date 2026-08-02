@@ -2,10 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Ketovore Resources", href: "/#resources" },
-  { label: "Rick's Journey", href: "/#journey" },
+  { label: "In The News", href: "/#resources" },
+  { label: "Pods & Youtube", href: "/#resources" },
+  { label: "Folks to Follow", href: "/#resources" },
+  { label: "Websites", href: "/#resources" },
+  { label: "Foodies", href: "/#resources" },
 ];
 
 export default function SiteHeader({ active }: { active?: string }) {
