@@ -13,7 +13,7 @@ export default function SiteHeader({ active }: { active?: string }) {
   return (
     <header className="border-b border-black/10 bg-white">
       <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-3 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-        <Link href="/" aria-label="Ketovore Canada home" className="block w-full max-w-[260px]">
+        <Link href="/" aria-label="Ketovore Canada home" className="no-underline block w-full max-w-[260px]">
           <Image
             src="/images/KC_horizontal_logo.webp"
             alt="Ketovore Canada — Transform, Educate, Inspire"
@@ -42,7 +42,7 @@ export default function SiteHeader({ active }: { active?: string }) {
               ) : null}
             </span>
           ))}
-          <Link href="/#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</Link>
+          <Link href="/#newsletter" className="no-underline rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</Link>
         </nav>
       </div>
     </header>
