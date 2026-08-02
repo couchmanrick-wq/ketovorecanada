@@ -67,10 +67,10 @@ const tabs = [
 ];
 
 const journey = [
-  { title: "About Rick", detail: "The person behind the journey" },
+  { title: "Who Is Rick", detail: "The guy behind Ketovore Canada" },
   { title: "Health Issues", detail: "The challenges that started it" },
   { title: "Daily Log", detail: "The numbers, meals, and movement" },
-  { title: "Blog", detail: "Lessons from the process" },
+  { title: "Blog", detail: "Thoughts, lessons along the journey" },
 ];
 
 const updates = [
