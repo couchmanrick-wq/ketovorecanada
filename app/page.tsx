@@ -87,7 +87,7 @@ export default function Home() {
     <main className="min-h-screen bg-[#f7f7f7] text-black">
       <header className="border-b border-black/10 bg-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-3 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <a href="#top" aria-label="Ketovore Canada home" className="block w-full max-w-[260px]">
+          <a href="https://ketovorecanada.com/" aria-label="Ketovore Canada home" className="block w-full max-w-[260px]">
             <Image
               src="/images/KC_horizontal_logo.webp"
               alt="Ketovore Canada — Transform, Educate, Inspire"
@@ -99,7 +99,7 @@ export default function Home() {
             />
           </a>
           <nav aria-label="Primary navigation" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-extrabold">
-            <a href="#top" className="border-b-2 border-[#ba0a07] py-2">Home</a>
+            <a href="https://ketovorecanada.com/" className="border-b-2 border-[#ba0a07] py-2">Home</a>
             <a href="#about" className="py-2 transition hover:text-[#ba0a07]">About</a>
             <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Ketovore Resources</a>
             <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Rick&apos;s Journey</a>
