@@ -141,8 +141,8 @@ export default function AdminDailyLog() {
                       </tr>
                       <tr className="border-b border-black/10 align-top">
                         <td></td>
-                        <td colSpan={3} className="py-2 pr-4">
-                          <div className="flex items-center gap-2">
+                        <td colSpan={4} className="py-2 pr-4">
+                          <div className="flex flex-wrap items-center gap-2">
                             <span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
                               Notes:
                             </span>
@@ -151,11 +151,10 @@ export default function AdminDailyLog() {
                               value={entry.notes}
                               onChange={(e) => updateEntry(dayKey, { notes: e.target.value })}
                               placeholder="Notes"
-                              className="w-full rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                              className="min-w-0 flex-1 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                             />
                           </div>
                         </td>
-                        <td></td>
                       </tr>
                     </Fragment>
                   );
