@@ -69,7 +69,6 @@ const tabs = [
 const journey = [
   { title: "About Rick", detail: "The person behind the journey" },
   { title: "Health Issues", detail: "The challenges that started it" },
-  { title: "Meds", detail: "Changes being monitored" },
   { title: "Daily Log", detail: "The numbers, meals, and movement" },
   { title: "Blog", detail: "Lessons from the process" },
 ];
@@ -89,7 +88,7 @@ const updates = [
 
 const footerLinks = [
   { title: "Explore", links: ["What is Ketovore", "Resources", "Latest updates", "Recipes"] },
-  { title: "Rick's Journey", links: ["About Rick", "Health issues", "Meds", "Daily log"] },
+  { title: "Rick's Journey", links: ["About Rick", "Health issues", "Daily log"] },
   { title: "Connect", links: ["Newsletter", "YouTube", "Podcasts", "Email"] },
 ];
 
