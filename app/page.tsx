@@ -231,7 +231,7 @@ export default function Home() {
               </section>
 
               <section className="border-t-4 border-black pt-5">
-                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">The focus</p>
+                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Rick&apos;s focus</p>
                 <blockquote className="mt-4 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-tight tracking-[0.03em]">
                   “Transform. Educate. Inspire.”
                 </blockquote>
