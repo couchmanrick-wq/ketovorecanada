@@ -165,46 +165,48 @@ export default function Home() {
 
       <section id="resources" className="w-full scroll-mt-6 border-t border-black/10">
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-          <div className="border-b border-black/20 pb-5">
-            <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Explore</p>
-            <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Ketovore resources</h2>
-          </div>
+          <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
+            <div className="min-w-0">
+              <div className="border-b border-black/20 pb-5">
+                <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Explore</p>
+                <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Ketovore resources</h2>
+              </div>
 
-          <div role="tablist" aria-label="Resource categories" className="mt-8 flex flex-wrap gap-2 border-b border-black/15">
-            {tabs.map((tab) => (
-              <button
-                key={tab.id}
-                type="button"
-                role="tab"
-                aria-selected={activeTab === tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`px-4 py-3 text-xs font-extrabold uppercase tracking-[0.15em] transition ${
-                  activeTab === tab.id
-                    ? "border-b-2 border-[#ba0a07] text-[#ba0a07]"
-                    : "border-b-2 border-transparent text-black/55 hover:text-[#ba0a07]"
-                }`}
-              >
-                {tab.label}
-              </button>
-            ))}
-          </div>
+              <div role="tablist" aria-label="Resource categories" className="mt-8 flex flex-wrap gap-2 border-b border-black/15">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    type="button"
+                    role="tab"
+                    aria-selected={activeTab === tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`px-4 py-3 text-xs font-extrabold uppercase tracking-[0.15em] transition ${
+                      activeTab === tab.id
+                        ? "border-b-2 border-[#ba0a07] text-[#ba0a07]"
+                        : "border-b-2 border-transparent text-black/55 hover:text-[#ba0a07]"
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
 
-          <div className="mt-10 grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
-            <div role="tabpanel" className="min-w-0">
-              {activeTabData.items.map((item) => (
-                <article key={item.title} className="group grid gap-5 border-b border-black/15 py-9 sm:grid-cols-[1fr_auto] sm:items-center">
-                  <div>
-                    {item.type ? (
-                      <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-black/45">{item.type} · Ketovore Canada</p>
-                    ) : null}
-                    <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold leading-tight transition group-hover:text-[#ba0a07] sm:text-3xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 max-w-3xl leading-7 text-black/60">{item.description}</p>
-                  </div>
-                  <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-black/25 text-xl transition group-hover:border-[#ba0a07] group-hover:bg-[#ba0a07] group-hover:text-white">→</span>
-                </article>
-              ))}
+              <div role="tabpanel" className="mt-10">
+                {activeTabData.items.map((item) => (
+                  <article key={item.title} className="group grid gap-5 border-b border-black/15 py-9 sm:grid-cols-[1fr_auto] sm:items-center">
+                    <div>
+                      {item.type ? (
+                        <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-black/45">{item.type} · Ketovore Canada</p>
+                      ) : null}
+                      <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold leading-tight transition group-hover:text-[#ba0a07] sm:text-3xl">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 max-w-3xl leading-7 text-black/60">{item.description}</p>
+                    </div>
+                    <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-black/25 text-xl transition group-hover:border-[#ba0a07] group-hover:bg-[#ba0a07] group-hover:text-white">→</span>
+                  </article>
+                ))}
+              </div>
             </div>
 
             <aside className="space-y-10">
