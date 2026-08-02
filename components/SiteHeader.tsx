@@ -34,22 +34,18 @@ export default function SiteHeader({ active }: { active?: string }) {
           aria-label="Primary navigation"
           className="hidden items-center gap-x-4 text-sm font-extrabold lg:flex"
         >
-          {navLinks.map((link, index) => (
-            <span key={link.label} className="flex items-center gap-x-4">
-              <Link
-                href={link.href}
-                className={
-                  active === link.label
-                    ? "border-b-2 border-[#ba0a07] py-2"
-                    : "py-2 transition hover:text-[#ba0a07]"
-                }
-              >
-                {link.label}
-              </Link>
-              {index < navLinks.length - 1 ? (
-                <span aria-hidden="true" className="text-black/20">&bull;</span>
-              ) : null}
-            </span>
+          {navLinks.map((link) => (
+            <Link
+              key={link.label}
+              href={link.href}
+              className={
+                active === link.label
+                  ? "border-b-2 border-[#ba0a07] py-2"
+                  : "py-2 transition hover:text-[#ba0a07]"
+              }
+            >
+              {link.label}
+            </Link>
           ))}
           <Link href="/#newsletter" className="no-underline rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</Link>
         </nav>
