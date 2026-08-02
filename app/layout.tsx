@@ -15,8 +15,23 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ketovorecanada.com"),
   title: "Ketovore Canada",
   description: "A Ketovore Canada site exploring carnivore, keto, resources, Rick's journey, and daily logs.",
+  openGraph: {
+    title: "Ketovore Canada",
+    description: "Carnivore first. Keto inspired. Built for real life.",
+    url: "https://ketovorecanada.com",
+    siteName: "Ketovore Canada",
+    images: [{ url: "/og.png", width: 1733, height: 907, alt: "Ketovore Canada — Transform, Educate, Inspire" }],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ketovore Canada",
+    description: "Carnivore first. Keto inspired. Built for real life.",
+    images: ["/og.png"],
+  },
 };
 
 export default function RootLayout({
