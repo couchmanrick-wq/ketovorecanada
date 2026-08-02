@@ -190,7 +190,7 @@ export default function Home() {
                 <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Ketovore resources</h2>
               </div>
 
-              <div role="tablist" aria-label="Resource categories" className="mt-8 flex flex-wrap gap-2 border-b border-black/15">
+              <div role="tablist" aria-label="Resource categories" className="mt-8 flex flex-wrap gap-1 rounded-lg border border-black/10 bg-black/[0.03] p-1.5">
                 {tabs.map((tab) => (
                   <button
                     key={tab.id}
@@ -198,10 +198,10 @@ export default function Home() {
                     role="tab"
                     aria-selected={activeTab === tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`px-4 py-3 text-xs font-extrabold uppercase tracking-[0.15em] transition ${
+                    className={`rounded-md px-4 py-2.5 text-xs font-extrabold uppercase tracking-[0.1em] transition ${
                       activeTab === tab.id
-                        ? "border-b-2 border-[#ba0a07] text-[#ba0a07]"
-                        : "border-b-2 border-transparent text-black/55 hover:text-[#ba0a07]"
+                        ? "bg-black text-white shadow-sm"
+                        : "text-black/60 hover:bg-black/5 hover:text-black"
                     }`}
                   >
                     {tab.label}
