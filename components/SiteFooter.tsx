@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const footerLinks = [
-  { title: "Explore", links: ["What is Ketovore", "Resources", "Recipes", "YouTube", "Podcasts"] },
-  { title: "Rick's Journey", links: ["About Rick", "Health issues", "Daily log"] },
-  { title: "Connect", links: ["Newsletter", "Email"] },
+  { title: "Explore", links: [{ label: "What is Ketovore", href: null }, { label: "Resources", href: null }, { label: "Recipes", href: null }, { label: "YouTube", href: null }, { label: "Podcasts", href: null }] },
+  { title: "Rick's Journey", links: [{ label: "About Rick", href: "/rick" }, { label: "Health issues", href: "/issues" }, { label: "Daily log", href: "/log" }] },
+  { title: "Connect", links: [{ label: "Newsletter", href: "/#newsletter" }, { label: "Email", href: null }] },
 ];
 
 export default function SiteFooter() {
@@ -21,7 +22,15 @@ export default function SiteFooter() {
             <div key={group.title}>
               <h2 className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">{group.title}</h2>
               <ul className="mt-5 space-y-3 text-sm text-white/70">
-                {group.links.map((link) => <li key={link}><span>{link}</span></li>)}
+                {group.links.map((link) => (
+                  <li key={link.label}>
+                    {link.href ? (
+                      <Link href={link.href} className="transition hover:text-white">{link.label}</Link>
+                    ) : (
+                      <span>{link.label}</span>
+                    )}
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
