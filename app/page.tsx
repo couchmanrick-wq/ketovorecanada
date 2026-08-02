@@ -216,7 +216,7 @@ export default function Home() {
               </div>
             </div>
 
-            <aside className="space-y-10">
+            <aside className="space-y-10 bg-[#dcdcdc] p-6">
               <section id="journey" className="scroll-mt-6">
                 <div className="flex items-end justify-between gap-4">
                   <h2 className="whitespace-nowrap font-[family-name:var(--font-display)] text-[22px] font-extrabold uppercase tracking-[0.04em]">About Rick Couchman</h2>
