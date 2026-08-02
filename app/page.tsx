@@ -103,10 +103,10 @@ export default function Home() {
               className="w-full rounded-md border-2 border-white/40 bg-[#2a2a2a] p-6 shadow-2xl shadow-black/60"
             >
               <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">
-                <span aria-hidden="true">★</span> Free newsletter
+                <span aria-hidden="true">★</span> Free weekly newsletter
               </p>
               <h2 className="mt-3 font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug">
-                Practical keto &amp; carnivore updates, in your inbox.
+                News, views &amp; carnivore updates, in your inbox.
               </h2>
               <div className="mt-5 flex flex-col gap-2 sm:flex-row">
                 <label htmlFor="hero-newsletter-email" className="sr-only">Email address</label>
