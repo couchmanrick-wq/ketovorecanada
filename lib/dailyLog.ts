@@ -10,13 +10,23 @@ export type DayEntry = {
   weight: string;
   steps: string;
   gym: boolean;
+  glucoseHigh: string;
+  glucoseLow: string;
   food: string;
   notes: string;
 };
 
 export type MonthData = Record<string, DayEntry>;
 
-export const emptyEntry: DayEntry = { weight: "", steps: "", gym: false, food: "", notes: "" };
+export const emptyEntry: DayEntry = {
+  weight: "",
+  steps: "",
+  gym: false,
+  glucoseHigh: "",
+  glucoseLow: "",
+  food: "",
+  notes: "",
+};
 
 export const STORAGE_KEY = "kc-daily-log";
 
@@ -40,5 +50,7 @@ export function readStoredData(): Record<string, MonthData> {
 }
 
 export function isEntryFilled(entry: DayEntry) {
-  return Boolean(entry.weight || entry.steps || entry.gym || entry.food || entry.notes);
+  return Boolean(
+    entry.weight || entry.steps || entry.gym || entry.glucoseHigh || entry.glucoseLow || entry.food || entry.notes
+  );
 }
