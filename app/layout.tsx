@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://ketovorecanada.com"),
   title: "Ketovore Canada",
   description: "A Ketovore Canada site exploring carnivore, keto, resources, Rick's journey, and daily logs.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "Ketovore Canada",
     description: "Carnivore first. Keto inspired. Built for real life.",
