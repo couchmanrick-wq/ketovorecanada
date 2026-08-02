@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "ketovorecanada",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-02",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "routes": [
+    { "pattern": "ketovorecanada.com/*", "zone_name": "ketovorecanada.com" },
+    { "pattern": "*.ketovorecanada.com/*", "zone_name": "ketovorecanada.com" }
+  ],
+  "observability": {
+    "enabled": true
+  },
+  // ADMIN_PASSWORD is NOT here on purpose — set it as an encrypted secret
+  // with `npx wrangler secret put ADMIN_PASSWORD`.
+  "vars": {
+    "ADMIN_USERNAME": "Rick"
+  },
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  }
+}
