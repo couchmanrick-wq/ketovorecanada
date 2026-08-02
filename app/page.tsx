@@ -101,8 +101,8 @@ export default function Home() {
           <nav aria-label="Primary navigation" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-extrabold">
             <a href="#top" className="border-b-2 border-[#ba0a07] py-2">Home</a>
             <a href="#about" className="py-2 transition hover:text-[#ba0a07]">About</a>
-            <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Resources</a>
-            <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Journey</a>
+            <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Ketovore Resources</a>
+            <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Rick&apos;s Journey</a>
             <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
           </nav>
         </div>
