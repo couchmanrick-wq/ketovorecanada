@@ -138,7 +138,7 @@ export default function Home() {
               Ketovore Canada brings together practical resources, honest progress, and a personal journey toward simpler food and better health.
             </p>
           </div>
-          <div className="justify-self-end lg:max-w-sm lg:justify-self-end">
+          <div id="newsletter" className="scroll-mt-6 justify-self-end lg:max-w-sm lg:justify-self-end">
             <form
               onSubmit={(event) => event.preventDefault()}
               className="w-full rounded-md border-2 border-white/40 bg-black p-6 shadow-2xl shadow-black/60"
@@ -228,20 +228,9 @@ export default function Home() {
             </div>
 
             <aside className="space-y-10">
-              <section id="newsletter" className="bg-black p-7 text-white shadow-lg shadow-black/10">
-                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Free newsletter</p>
-                <h2 className="mt-3 font-[family-name:var(--font-display)] text-xl font-extrabold">Practical insights in your inbox.</h2>
-                <p className="mt-3 text-sm leading-6 text-white/65">New resources, progress notes, and honest reflections as they are published.</p>
-                <a href="mailto:hello@ketovorecanada.com?subject=Ketovore%20Canada%20Newsletter" className="mt-6 flex w-full justify-center bg-[#ba0a07] px-4 py-3 text-sm font-extrabold text-white transition hover:bg-white hover:text-black">
-                  Join the newsletter
-                </a>
-                <p className="mt-3 text-xs text-white/45">Free · unsubscribe anytime.</p>
-              </section>
-
-              <section id="journey" className="scroll-mt-6 border-t-4 border-black pt-5">
+              <section id="journey" className="scroll-mt-6">
                 <div className="flex items-end justify-between gap-4">
-                  <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-[0.04em]">Rick&apos;s journey</h2>
-                  <span className="bg-black px-2 py-1 text-[10px] font-extrabold uppercase tracking-wider text-white">Personal</span>
+                  <h2 className="font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-[0.04em]">About Rick Couchman</h2>
                 </div>
                 <div className="mt-4">
                   {journey.map((item, index) => (
