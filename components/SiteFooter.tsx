@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const footerLinks = [
   { title: "Explore", links: [{ label: "What is Ketovore", href: null }, { label: "Resources", href: null }, { label: "Recipes", href: null }, { label: "YouTube", href: null }, { label: "Podcasts", href: null }] },
-  { title: "Rick's Journey", links: [{ label: "About Rick", href: "/rick" }, { label: "Health issues", href: "/issues" }] },
+  { title: "Rick's Journey", links: [{ label: "About Rick", href: "/rick" }, { label: "Health issues", href: "/issues" }, { label: "Daily log", href: "/log" }] },
   { title: "Connect", links: [{ label: "Newsletter", href: "/#newsletter" }, { label: "Email", href: null }] },
 ];
 
