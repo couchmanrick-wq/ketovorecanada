@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import {
@@ -61,22 +61,28 @@ export default function DailyLog() {
                         <th className="py-3 pr-4">Weight</th>
                         <th className="py-3 pr-4">Steps Walked</th>
                         <th className="py-3 pr-4 text-center">Gym Workout</th>
-                        <th className="py-3 pr-4">Feeling</th>
                         <th className="py-3 pr-4">Food Diary</th>
                       </tr>
                     </thead>
                     <tbody>
                       {m.rows.map(({ day, entry }) => (
-                        <tr key={day} className="border-b border-black/10 align-top">
-                          <td className="py-2 pr-4 whitespace-nowrap font-semibold">
-                            {formatDate(m.year, m.month, day)}
-                          </td>
-                          <td className="py-2 pr-4">{entry!.weight || "—"}</td>
-                          <td className="py-2 pr-4">{entry!.steps || "—"}</td>
-                          <td className="py-2 pr-4 text-center">{entry!.gym ? "✓" : "—"}</td>
-                          <td className="py-2 pr-4">{entry!.feeling || "—"}</td>
-                          <td className="py-2 pr-4">{entry!.food || "—"}</td>
-                        </tr>
+                        <Fragment key={day}>
+                          <tr className="align-top">
+                            <td className="py-2 pr-4 whitespace-nowrap font-semibold">
+                              {formatDate(m.year, m.month, day)}
+                            </td>
+                            <td className="py-2 pr-4">{entry!.weight || "—"}</td>
+                            <td className="py-2 pr-4">{entry!.steps || "—"}</td>
+                            <td className="py-2 pr-4 text-center">{entry!.gym ? "✓" : "—"}</td>
+                            <td className="py-2 pr-4">{entry!.food || "—"}</td>
+                          </tr>
+                          <tr className="border-b border-black/10 align-top">
+                            <td className="pb-2 pr-4"></td>
+                            <td colSpan={4} className="pb-2 pr-4 text-black/60">
+                              <span className="font-semibold text-black/80">Notes:</span> {entry!.notes || "—"}
+                            </td>
+                          </tr>
+                        </Fragment>
                       ))}
                     </tbody>
                   </table>

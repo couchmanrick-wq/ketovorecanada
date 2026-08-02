@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import {
@@ -8,7 +8,6 @@ import {
   MonthData,
   daysInMonth,
   emptyEntry,
-  feelingOptions,
   formatDate,
   months,
   readStoredData,
@@ -89,7 +88,6 @@ export default function AdminDailyLog() {
                   <th className="py-3 pr-4">Weight</th>
                   <th className="py-3 pr-4">Steps Walked</th>
                   <th className="py-3 pr-4 text-center">Gym Workout</th>
-                  <th className="py-3 pr-4">Feeling</th>
                   <th className="py-3 pr-4">Food Diary</th>
                 </tr>
               </thead>
@@ -98,61 +96,68 @@ export default function AdminDailyLog() {
                   const dayKey = String(day);
                   const entry = monthData[dayKey] ?? emptyEntry;
                   return (
-                    <tr key={day} className="border-b border-black/10 align-top">
-                      <td className="py-2 pr-4 whitespace-nowrap font-semibold">
-                        {formatDate(activeMonthMeta.year, activeMonthMeta.month, day)}
-                      </td>
-                      <td className="py-2 pr-4">
-                        <input
-                          type="text"
-                          inputMode="decimal"
-                          value={entry.weight}
-                          onChange={(e) => updateEntry(dayKey, { weight: e.target.value })}
-                          placeholder="lbs"
-                          className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                        />
-                      </td>
-                      <td className="py-2 pr-4">
-                        <input
-                          type="text"
-                          inputMode="numeric"
-                          value={entry.steps}
-                          onChange={(e) => updateEntry(dayKey, { steps: e.target.value })}
-                          placeholder="0"
-                          className="w-24 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                        />
-                      </td>
-                      <td className="py-2 pr-4 text-center">
-                        <input
-                          type="checkbox"
-                          checked={entry.gym}
-                          onChange={(e) => updateEntry(dayKey, { gym: e.target.checked })}
-                          className="h-4 w-4 accent-[#ba0a07]"
-                        />
-                      </td>
-                      <td className="py-2 pr-4">
-                        <select
-                          value={entry.feeling}
-                          onChange={(e) => updateEntry(dayKey, { feeling: e.target.value })}
-                          className="w-28 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                        >
-                          {feelingOptions.map((opt) => (
-                            <option key={opt || "blank"} value={opt}>
-                              {opt || "—"}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                      <td className="py-2 pr-4">
-                        <input
-                          type="text"
-                          value={entry.food}
-                          onChange={(e) => updateEntry(dayKey, { food: e.target.value })}
-                          placeholder="What did you eat today?"
-                          className="w-full min-w-[220px] rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                        />
-                      </td>
-                    </tr>
+                    <Fragment key={day}>
+                      <tr className="align-top">
+                        <td className="py-2 pr-4 whitespace-nowrap font-semibold">
+                          {formatDate(activeMonthMeta.year, activeMonthMeta.month, day)}
+                        </td>
+                        <td className="py-2 pr-4">
+                          <input
+                            type="text"
+                            inputMode="decimal"
+                            value={entry.weight}
+                            onChange={(e) => updateEntry(dayKey, { weight: e.target.value })}
+                            placeholder="lbs"
+                            className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                          />
+                        </td>
+                        <td className="py-2 pr-4">
+                          <input
+                            type="text"
+                            inputMode="numeric"
+                            value={entry.steps}
+                            onChange={(e) => updateEntry(dayKey, { steps: e.target.value })}
+                            placeholder="0"
+                            className="w-24 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                          />
+                        </td>
+                        <td className="py-2 pr-4 text-center">
+                          <input
+                            type="checkbox"
+                            checked={entry.gym}
+                            onChange={(e) => updateEntry(dayKey, { gym: e.target.checked })}
+                            className="h-4 w-4 accent-[#ba0a07]"
+                          />
+                        </td>
+                        <td className="py-2 pr-4">
+                          <input
+                            type="text"
+                            value={entry.food}
+                            onChange={(e) => updateEntry(dayKey, { food: e.target.value })}
+                            placeholder="What did you eat today?"
+                            className="w-full min-w-[220px] rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                          />
+                        </td>
+                      </tr>
+                      <tr className="border-b border-black/10 align-top">
+                        <td></td>
+                        <td colSpan={3} className="py-2 pr-4">
+                          <div className="flex items-center gap-2">
+                            <span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
+                              Notes:
+                            </span>
+                            <input
+                              type="text"
+                              value={entry.notes}
+                              onChange={(e) => updateEntry(dayKey, { notes: e.target.value })}
+                              placeholder="Notes"
+                              className="w-full rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                            />
+                          </div>
+                        </td>
+                        <td></td>
+                      </tr>
+                    </Fragment>
                   );
                 })}
               </tbody>

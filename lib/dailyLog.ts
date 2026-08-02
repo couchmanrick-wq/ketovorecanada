@@ -6,19 +6,17 @@ export const months = [
   { id: "2026-12", label: "Dec 26", year: 2026, month: 11 },
 ];
 
-export const feelingOptions = ["", "Great", "Decent", "Meh", "Rotten"];
-
 export type DayEntry = {
   weight: string;
   steps: string;
   gym: boolean;
-  feeling: string;
   food: string;
+  notes: string;
 };
 
 export type MonthData = Record<string, DayEntry>;
 
-export const emptyEntry: DayEntry = { weight: "", steps: "", gym: false, feeling: "", food: "" };
+export const emptyEntry: DayEntry = { weight: "", steps: "", gym: false, food: "", notes: "" };
 
 export const STORAGE_KEY = "kc-daily-log";
 
@@ -42,5 +40,5 @@ export function readStoredData(): Record<string, MonthData> {
 }
 
 export function isEntryFilled(entry: DayEntry) {
-  return Boolean(entry.weight || entry.steps || entry.gym || entry.feeling || entry.food);
+  return Boolean(entry.weight || entry.steps || entry.gym || entry.food || entry.notes);
 }
