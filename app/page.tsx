@@ -232,8 +232,8 @@ export default function Home() {
 
               <section className="border-t-4 border-black pt-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Rick&apos;s focus</p>
-                <blockquote className="mt-4 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-tight tracking-[0.03em]">
-                  “Transform. Educate. Inspire.”
+                <blockquote className="mt-4 font-[family-name:var(--font-display)] text-[22px] font-extrabold uppercase leading-tight tracking-[0.03em]">
+                  Transform. Educate. Inspire.
                 </blockquote>
                 <p className="mt-3 text-sm leading-6 text-black/55">Real food, honest measurement, and useful lessons from one Canadian&apos;s health journey.</p>
               </section>
