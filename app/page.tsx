@@ -100,7 +100,7 @@ export default function Home() {
           <div id="newsletter" className="scroll-mt-6 justify-self-end lg:max-w-sm lg:justify-self-end">
             <form
               onSubmit={(event) => event.preventDefault()}
-              className="w-full rounded-md border-2 border-white/40 bg-black p-6 shadow-2xl shadow-black/60"
+              className="w-full rounded-md border-2 border-white/40 bg-[#2a2a2a] p-6 shadow-2xl shadow-black/60"
             >
               <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">
                 <span aria-hidden="true">★</span> Free newsletter
