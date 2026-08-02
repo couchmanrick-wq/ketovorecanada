@@ -144,9 +144,9 @@ function DailyLogPanel() {
           <thead>
             <tr className="border-b-2 border-black text-left text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
               <th className="py-3 pr-4">Date</th>
-              <th className="py-3 pr-4">Weight</th>
-              <th className="py-3 pr-4">Steps Walked</th>
-              <th className="py-3 pr-4 text-center">Gym Workout</th>
+              <th className="py-3 pr-2">Weight</th>
+              <th className="py-3 pr-2">Steps Walked</th>
+              <th className="py-3 pr-2">Gym Workout</th>
               <th className="py-3 pr-4">Avg Glucose</th>
               <th className="py-3 pr-4">Food Diary</th>
             </tr>
@@ -161,7 +161,7 @@ function DailyLogPanel() {
                     <td className="py-2 pr-4 whitespace-nowrap font-semibold">
                       {formatDate(activeMonthMeta.year, activeMonthMeta.month, day)}
                     </td>
-                    <td className="py-2 pr-4">
+                    <td className="py-2 pr-2">
                       <input
                         type="text"
                         inputMode="decimal"
@@ -171,7 +171,7 @@ function DailyLogPanel() {
                         className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       />
                     </td>
-                    <td className="py-2 pr-4">
+                    <td className="py-2 pr-2">
                       <input
                         type="text"
                         inputMode="numeric"
@@ -181,11 +181,11 @@ function DailyLogPanel() {
                         className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       />
                     </td>
-                    <td className="py-2 pr-4">
+                    <td className="py-2 pr-2">
                       <select
                         value={entry.gym ? "yes" : "no"}
                         onChange={(e) => updateEntry(dayKey, { gym: e.target.value === "yes" })}
-                        className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                        className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       >
                         <option value="no">No</option>
                         <option value="yes">Yes</option>
