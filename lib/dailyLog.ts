@@ -10,8 +10,7 @@ export type DayEntry = {
   weight: string;
   steps: string;
   gym: boolean;
-  glucoseHigh: string;
-  glucoseLow: string;
+  avgGlucose: string;
   food: string;
   notes: string;
 };
@@ -22,8 +21,7 @@ export const emptyEntry: DayEntry = {
   weight: "",
   steps: "",
   gym: false,
-  glucoseHigh: "",
-  glucoseLow: "",
+  avgGlucose: "",
   food: "",
   notes: "",
 };
@@ -51,6 +49,6 @@ export function readStoredData(): Record<string, MonthData> {
 
 export function isEntryFilled(entry: DayEntry) {
   return Boolean(
-    entry.weight || entry.steps || entry.gym || entry.glucoseHigh || entry.glucoseLow || entry.food || entry.notes
+    entry.weight || entry.steps || entry.gym || entry.avgGlucose || entry.food || entry.notes
   );
 }

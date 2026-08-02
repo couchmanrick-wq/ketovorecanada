@@ -88,8 +88,7 @@ export default function AdminDailyLog() {
                   <th className="py-3 pr-4">Weight</th>
                   <th className="py-3 pr-4">Steps Walked</th>
                   <th className="py-3 pr-4 text-center">Gym Workout</th>
-                  <th className="py-3 pr-4">Glucose High</th>
-                  <th className="py-3 pr-4">Glucose Low</th>
+                  <th className="py-3 pr-4">Avg Glucose</th>
                   <th className="py-3 pr-4">Food Diary</th>
                 </tr>
               </thead>
@@ -135,18 +134,8 @@ export default function AdminDailyLog() {
                           <input
                             type="text"
                             inputMode="numeric"
-                            value={entry.glucoseHigh}
-                            onChange={(e) => updateEntry(dayKey, { glucoseHigh: e.target.value })}
-                            placeholder="0"
-                            className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                          />
-                        </td>
-                        <td className="py-2 pr-4">
-                          <input
-                            type="text"
-                            inputMode="numeric"
-                            value={entry.glucoseLow}
-                            onChange={(e) => updateEntry(dayKey, { glucoseLow: e.target.value })}
+                            value={entry.avgGlucose}
+                            onChange={(e) => updateEntry(dayKey, { avgGlucose: e.target.value })}
                             placeholder="0"
                             className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                           />
@@ -163,7 +152,7 @@ export default function AdminDailyLog() {
                       </tr>
                       <tr className="border-b border-black/10 align-top">
                         <td></td>
-                        <td colSpan={6} className="py-2 pr-4">
+                        <td colSpan={5} className="py-2 pr-4">
                           <div className="flex flex-wrap items-center gap-2">
                             <span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
                               Notes:

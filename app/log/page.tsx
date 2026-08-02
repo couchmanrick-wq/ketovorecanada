@@ -61,8 +61,7 @@ export default function DailyLog() {
                         <th className="py-3 pr-4">Weight</th>
                         <th className="py-3 pr-4">Steps Walked</th>
                         <th className="py-3 pr-4 text-center">Gym Workout</th>
-                        <th className="py-3 pr-4">Glucose High</th>
-                        <th className="py-3 pr-4">Glucose Low</th>
+                        <th className="py-3 pr-4">Avg Glucose</th>
                         <th className="py-3 pr-4">Food Diary</th>
                       </tr>
                     </thead>
@@ -76,13 +75,12 @@ export default function DailyLog() {
                             <td className="py-2 pr-4">{entry!.weight || "—"}</td>
                             <td className="py-2 pr-4">{entry!.steps || "—"}</td>
                             <td className="py-2 pr-4 text-center">{entry!.gym ? "✓" : "—"}</td>
-                            <td className="py-2 pr-4">{entry!.glucoseHigh || "—"}</td>
-                            <td className="py-2 pr-4">{entry!.glucoseLow || "—"}</td>
+                            <td className="py-2 pr-4">{entry!.avgGlucose || "—"}</td>
                             <td className="py-2 pr-4">{entry!.food || "—"}</td>
                           </tr>
                           <tr className="border-b border-black/10 align-top">
                             <td className="pb-2 pr-4"></td>
-                            <td colSpan={6} className="pb-2 pr-4 text-black/60">
+                            <td colSpan={5} className="pb-2 pr-4 text-black/60">
                               <span className="font-semibold text-black/80">Notes:</span> {entry!.notes || "—"}
                             </td>
                           </tr>
