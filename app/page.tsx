@@ -118,7 +118,7 @@ export default function Home() {
             <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Resources</a>
             <a href="#updates" className="py-2 transition hover:text-[#ba0a07]">Updates</a>
             <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Journey</a>
-            <a href="#newsletter" className="rounded-sm bg-[#ba0a07] px-4 py-2 text-white transition hover:bg-black">Newsletter</a>
+            <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
           </nav>
         </div>
       </header>
