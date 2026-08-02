@@ -138,17 +138,35 @@ export default function Home() {
               Ketovore Canada brings together practical resources, honest progress, and a personal journey toward simpler food and better health.
             </p>
           </div>
-          <div className="hidden justify-self-end lg:block">
-            <div className="rounded-full bg-white p-3 shadow-2xl shadow-[#ba0a07]/20">
-              <Image
-                src="/images/KC_round_logo.webp"
-                alt="Ketovore Canada round logo"
-                width={1254}
-                height={1254}
-                sizes="300px"
-                className="h-auto w-[300px] rounded-full"
-              />
-            </div>
+          <div className="justify-self-end lg:max-w-sm lg:justify-self-end">
+            <form
+              onSubmit={(event) => event.preventDefault()}
+              className="w-full rounded-md border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/40 backdrop-blur-sm"
+            >
+              <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">
+                <span aria-hidden="true">★</span> Free newsletter
+              </p>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug">
+                Practical keto &amp; carnivore updates, in your inbox.
+              </h2>
+              <div className="mt-5 flex flex-col gap-2 sm:flex-row">
+                <label htmlFor="hero-newsletter-email" className="sr-only">Email address</label>
+                <input
+                  id="hero-newsletter-email"
+                  type="email"
+                  required
+                  placeholder="you@email.com"
+                  className="w-full flex-1 border border-white/20 bg-white px-4 py-3 text-sm text-black placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-[#ba0a07]"
+                />
+                <button
+                  type="submit"
+                  className="whitespace-nowrap bg-[#ba0a07] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-black"
+                >
+                  Join free
+                </button>
+              </div>
+              <p className="mt-3 text-xs text-white/50">Free · unsubscribe anytime.</p>
+            </form>
           </div>
         </div>
       </section>
