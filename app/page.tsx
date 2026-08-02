@@ -171,7 +171,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="about" className="w-full bg-[#f7f7f7]">
+      <section id="about" className="w-full bg-[#FFEBEE]">
         <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-10">
           <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Start here</p>
           <h2 className="mt-3 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em] sm:text-6xl">What is Ketovore?</h2>
