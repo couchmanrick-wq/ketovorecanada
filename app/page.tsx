@@ -73,21 +73,8 @@ const journey = [
   { title: "Blog", detail: "Thoughts, lessons along the journey" },
 ];
 
-const updates = [
-  {
-    label: "From the journey",
-    title: "Building better health one repeatable choice at a time",
-    description: "Progress is rarely one dramatic moment. It is the accumulation of meals, movement, sleep, and honest reflection.",
-  },
-  {
-    label: "Coming next",
-    title: "A clearer daily view of the numbers that matter",
-    description: "The daily log will bring weight, insulin, steps, gym sessions, measurements, food, and photos into one practical dashboard.",
-  },
-];
-
 const footerLinks = [
-  { title: "Explore", links: ["What is Ketovore", "Resources", "Latest updates", "Recipes"] },
+  { title: "Explore", links: ["What is Ketovore", "Resources", "Recipes"] },
   { title: "Rick's Journey", links: ["About Rick", "Health issues", "Daily log"] },
   { title: "Connect", links: ["Newsletter", "YouTube", "Podcasts", "Email"] },
 ];
@@ -115,7 +102,6 @@ export default function Home() {
             <a href="#top" className="border-b-2 border-[#ba0a07] py-2">Home</a>
             <a href="#about" className="py-2 transition hover:text-[#ba0a07]">About</a>
             <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Resources</a>
-            <a href="#updates" className="py-2 transition hover:text-[#ba0a07]">Updates</a>
             <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Journey</a>
             <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
           </nav>
@@ -244,16 +230,6 @@ export default function Home() {
                 </div>
               </section>
 
-              <section className="border-t-4 border-[#ba0a07] pt-5">
-                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Daily log</p>
-                <h2 className="mt-3 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase tracking-[0.04em]">The full picture, tracked honestly.</h2>
-                <div className="mt-5 grid grid-cols-2 gap-px border border-black/15 bg-black/15">
-                  {['Weight', 'Insulin', 'Steps', 'Food', 'Gym', 'Photos'].map((item) => (
-                    <div key={item} className="bg-white p-4 text-sm font-extrabold">{item}</div>
-                  ))}
-                </div>
-              </section>
-
               <section className="border-t-4 border-black pt-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">The focus</p>
                 <blockquote className="mt-4 font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-tight tracking-[0.03em]">
@@ -262,22 +238,6 @@ export default function Home() {
                 <p className="mt-3 text-sm leading-6 text-black/55">Real food, honest measurement, and useful lessons from one Canadian&apos;s health journey.</p>
               </section>
             </aside>
-          </div>
-        </div>
-      </section>
-
-      <section id="updates" className="w-full scroll-mt-6 border-t border-black/10">
-        <div className="mx-auto max-w-7xl px-6 py-16 lg:px-10 lg:py-20">
-          <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">The latest</p>
-          <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Notes from the journey</h2>
-          <div className="mt-6 grid gap-5 md:grid-cols-2">
-            {updates.map((item) => (
-              <article key={item.title} className="border-t-4 border-[#ba0a07] bg-white p-7 shadow-sm">
-                <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">{item.label}</p>
-                <h3 className="mt-4 font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug">{item.title}</h3>
-                <p className="mt-4 leading-7 text-black/60">{item.description}</p>
-              </article>
-            ))}
           </div>
         </div>
       </section>
