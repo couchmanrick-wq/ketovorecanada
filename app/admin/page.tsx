@@ -181,13 +181,15 @@ function DailyLogPanel() {
                         className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       />
                     </td>
-                    <td className="py-2 pr-4 text-center">
-                      <input
-                        type="checkbox"
-                        checked={entry.gym}
-                        onChange={(e) => updateEntry(dayKey, { gym: e.target.checked })}
-                        className="h-4 w-4 accent-[#ba0a07]"
-                      />
+                    <td className="py-2 pr-4">
+                      <select
+                        value={entry.gym ? "yes" : "no"}
+                        onChange={(e) => updateEntry(dayKey, { gym: e.target.value === "yes" })}
+                        className="w-20 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
+                      >
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                      </select>
                     </td>
                     <td className="py-2 pr-4">
                       <input
