@@ -141,7 +141,7 @@ export default function Home() {
           <div className="justify-self-end lg:max-w-sm lg:justify-self-end">
             <form
               onSubmit={(event) => event.preventDefault()}
-              className="w-full rounded-md border border-white/10 bg-white/[0.06] p-6 shadow-2xl shadow-black/40 backdrop-blur-sm"
+              className="w-full rounded-md border-2 border-white/40 bg-black p-6 shadow-2xl shadow-black/60"
             >
               <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">
                 <span aria-hidden="true">★</span> Free newsletter
@@ -156,16 +156,16 @@ export default function Home() {
                   type="email"
                   required
                   placeholder="you@email.com"
-                  className="w-full flex-1 border border-white/20 bg-white px-4 py-3 text-sm text-black placeholder:text-black/40 focus:outline-none focus:ring-2 focus:ring-[#ba0a07]"
+                  className="w-full flex-1 border-2 border-white bg-white px-4 py-3 text-sm text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[#ba0a07]"
                 />
                 <button
                   type="submit"
-                  className="whitespace-nowrap bg-[#ba0a07] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-black"
+                  className="whitespace-nowrap bg-[#ba0a07] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white"
                 >
                   Join free
                 </button>
               </div>
-              <p className="mt-3 text-xs text-white/50">Free · unsubscribe anytime.</p>
+              <p className="mt-3 text-xs text-white/70">Free · unsubscribe anytime.</p>
             </form>
           </div>
         </div>
