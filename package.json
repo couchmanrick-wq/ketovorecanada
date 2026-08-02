@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "pages:build": "next build",
-    "deploy:cloudflare": "npm run build"
+    "deploy:cloudflare": "npm run build",
+    "optimize-images": "node scripts/optimize-images.js"
   },
   "dependencies": {
     "next": "^16.2.12",
@@ -23,6 +24,7 @@
     "eslint": "^9",
     "eslint-config-next": "^16.2.12",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "sharp": "^0.32.0"
   }
 }
