@@ -69,7 +69,7 @@ const tabs = [
 
 const journey = [
   { title: "Who Is Rick", detail: "The guy behind Ketovore Canada", href: "/rick" },
-  { title: "Health Issues", detail: "The challenges that started it" },
+  { title: "Health Issues", detail: "The challenges that started it", href: "/issues" },
   { title: "Daily Log", detail: "The numbers, meals, and movement" },
   { title: "Blog", detail: "Thoughts, lessons along the journey" },
 ];
