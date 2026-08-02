@@ -26,7 +26,7 @@ export const emptyEntry: DayEntry = {
   notes: "",
 };
 
-export const STORAGE_KEY = "kc-daily-log";
+export const DAILY_LOG_KV_KEY = "kc-daily-log";
 
 export function daysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
@@ -37,13 +37,26 @@ export function formatDate(year: number, month: number, day: number) {
   return d.toLocaleDateString("en-CA", { weekday: "short", month: "short", day: "numeric" });
 }
 
-export function readStoredData(): Record<string, MonthData> {
-  if (typeof window === "undefined") return {};
+export async function fetchDailyLog(): Promise<Record<string, MonthData>> {
   try {
-    const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? JSON.parse(raw) : {};
+    const res = await fetch("/api/daily-log", { cache: "no-store" });
+    if (!res.ok) return {};
+    return await res.json();
   } catch {
     return {};
+  }
+}
+
+export async function saveDailyLog(data: Record<string, MonthData>): Promise<boolean> {
+  try {
+    const res = await fetch("/api/admin/daily-log", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    });
+    return res.ok;
+  } catch {
+    return false;
   }
 }
 

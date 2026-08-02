@@ -1,19 +1,25 @@
-"use client";
-
-import { Fragment, useState } from "react";
+import { Fragment } from "react";
+import type { Metadata } from "next";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import {
-  MonthData,
-  daysInMonth,
-  formatDate,
-  isEntryFilled,
-  months,
-  readStoredData,
-} from "@/lib/dailyLog";
+import { DAILY_LOG_KV_KEY, MonthData, daysInMonth, formatDate, isEntryFilled, months } from "@/lib/dailyLog";
 
-export default function DailyLog() {
-  const [data] = useState<Record<string, MonthData>>(readStoredData);
+export const dynamic = "force-dynamic";
+
+export const metadata: Metadata = {
+  title: "Daily Log | Ketovore Canada",
+};
+
+async function getDailyLogData(): Promise<Record<string, MonthData>> {
+  const { env } = getCloudflareContext();
+  const kv = (env as unknown as Env).DAILY_LOG_KV;
+  const raw = await kv.get(DAILY_LOG_KV_KEY);
+  return raw ? JSON.parse(raw) : {};
+}
+
+export default async function DailyLog() {
+  const data = await getDailyLogData();
 
   const monthsWithEntries = months
     .map((m) => {

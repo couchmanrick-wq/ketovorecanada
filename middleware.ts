@@ -50,7 +50,7 @@ function adminPasswordRequiredResponse() {
 export function middleware(req: NextRequest) {
   const pathname = req.nextUrl.pathname;
 
-  if (pathname === "/admin" || pathname.startsWith("/admin/")) {
+  if (pathname === "/admin" || pathname.startsWith("/admin/") || pathname.startsWith("/api/admin/")) {
     if (!isValidAdminAuth(req)) {
       return adminPasswordRequiredResponse();
     }
@@ -61,5 +61,5 @@ export function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*"],
+  matcher: ["/admin", "/admin/:path*", "/api/admin/:path*"],
 };

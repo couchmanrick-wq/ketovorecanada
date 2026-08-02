@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import {
@@ -8,10 +8,10 @@ import {
   MonthData,
   daysInMonth,
   emptyEntry,
+  fetchDailyLog,
   formatDate,
   months,
-  readStoredData,
-  STORAGE_KEY,
+  saveDailyLog,
 } from "@/lib/dailyLog";
 
 const navTabs = [
@@ -92,11 +92,17 @@ export default function Admin() {
 
 function DailyLogPanel() {
   const [activeMonth, setActiveMonth] = useState(months[0].id);
-  const [data, setData] = useState<Record<string, MonthData>>(readStoredData);
+  const [data, setData] = useState<Record<string, MonthData>>({});
+  const [loaded, setLoaded] = useState(false);
+  const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const saveTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
-    window.localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-  }, [data]);
+    fetchDailyLog().then((remote) => {
+      setData(remote);
+      setLoaded(true);
+    });
+  }, []);
 
   const activeMonthMeta = useMemo(
     () => months.find((m) => m.id === activeMonth) ?? months[0],
@@ -110,18 +116,40 @@ function DailyLogPanel() {
     setData((prev) => {
       const prevMonth = prev[activeMonth] ?? {};
       const prevEntry = prevMonth[dayKey] ?? emptyEntry;
-      return {
+      const next = {
         ...prev,
         [activeMonth]: {
           ...prevMonth,
           [dayKey]: { ...prevEntry, ...patch },
         },
       };
+
+      setSaveState("saving");
+      if (saveTimeout.current) clearTimeout(saveTimeout.current);
+      saveTimeout.current = setTimeout(async () => {
+        const ok = await saveDailyLog(next);
+        setSaveState(ok ? "saved" : "error");
+      }, 600);
+
+      return next;
     });
+  }
+
+  if (!loaded) {
+    return (
+      <div className="rounded-sm border border-black/15 bg-white p-6">
+        <p className="text-sm text-black/60">Loading daily log…</p>
+      </div>
+    );
   }
 
   return (
     <div>
+      <p className="mb-4 text-xs font-extrabold uppercase tracking-[0.15em] text-black/45">
+        {saveState === "saving" && "Saving…"}
+        {saveState === "saved" && "Saved"}
+        {saveState === "error" && <span className="text-[#ba0a07]">Save failed — check connection</span>}
+      </p>
       <nav aria-label="Month tabs" className="flex flex-wrap gap-2 border-b border-black/10 pb-4">
         {months.map((m) => (
           <button
@@ -234,7 +262,7 @@ function DailyLogPanel() {
         </table>
       </div>
 
-      <p className="mt-4 text-xs text-black/45">Entries are saved in your browser on this device.</p>
+      <p className="mt-4 text-xs text-black/45">Entries are saved to the server and visible on the public log page.</p>
     </div>
   );
 }

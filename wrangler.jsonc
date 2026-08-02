@@ -16,6 +16,12 @@
   "vars": {
     "ADMIN_USERNAME": "Rick"
   },
+  "kv_namespaces": [
+    {
+      "binding": "DAILY_LOG_KV",
+      "id": "0b5da19563274372998336dee628e1ae"
+    }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
