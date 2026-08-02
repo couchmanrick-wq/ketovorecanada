@@ -1,9 +1,9 @@
 import Image from "next/image";
 
 const footerLinks = [
-  { title: "Explore", links: ["What is Ketovore", "Resources", "Recipes"] },
+  { title: "Explore", links: ["What is Ketovore", "Resources", "Recipes", "YouTube", "Podcasts"] },
   { title: "Rick's Journey", links: ["About Rick", "Health issues", "Daily log"] },
-  { title: "Connect", links: ["Newsletter", "YouTube", "Podcasts", "Email"] },
+  { title: "Connect", links: ["Newsletter", "Email"] },
 ];
 
 export default function SiteFooter() {
