@@ -106,7 +106,6 @@ export default function Home() {
             <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Ketovore Resources</a>
             <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Rick&apos;s Journey</a>
-            <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
           </nav>
         </div>
