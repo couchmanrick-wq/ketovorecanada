@@ -188,7 +188,8 @@ export default function Home() {
 
             <aside className="space-y-10 bg-[#f0f0f0] p-6">
               <section id="journey" className="scroll-mt-6">
-                <div className="flex items-end justify-between gap-4">
+                <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Meet the site owner</p>
+                <div className="mt-2 flex items-end justify-between gap-4">
                   <h2 className="whitespace-nowrap font-[family-name:var(--font-display)] text-[22px] font-extrabold uppercase tracking-[0.04em]">About Rick Couchman</h2>
                 </div>
                 <div className="mt-4">
