@@ -100,9 +100,13 @@ export default function Home() {
           </a>
           <nav aria-label="Primary navigation" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-extrabold">
             <a href="https://ketovorecanada.com/" className="border-b-2 border-[#ba0a07] py-2">Home</a>
+            <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#about" className="py-2 transition hover:text-[#ba0a07]">About</a>
+            <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Ketovore Resources</a>
+            <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Rick&apos;s Journey</a>
+            <span aria-hidden="true" className="text-black/20">|</span>
             <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
           </nav>
         </div>
