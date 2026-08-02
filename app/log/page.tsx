@@ -79,8 +79,7 @@ export default function DailyLog() {
                             <td className="py-2 pr-4">{entry!.food || "—"}</td>
                           </tr>
                           <tr className="border-b border-black/10 align-top">
-                            <td className="pb-2 pr-4"></td>
-                            <td colSpan={5} className="pb-2 pr-4 text-black/60">
+                            <td colSpan={6} className="pb-2 pr-4 text-black/60">
                               <span className="font-semibold text-black/80">Notes:</span> {entry!.notes || "—"}
                             </td>
                           </tr>
