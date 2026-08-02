@@ -174,7 +174,7 @@ export default function Home() {
       <section id="about" className="w-full bg-[#FFEBEE]">
         <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-10">
           <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Start here</p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em] sm:text-6xl">What is Ketovore?</h2>
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-extrabold uppercase tracking-[0.03em]">What is Ketovore?</h2>
           <p className="mt-5 text-lg leading-8 text-black/65">
             Ketovore sits at the intersection of carnivore and keto: an animal-food-focused way of eating with very low carbohydrate intake, nourishing fats, and fewer complications. It is less about perfection and more about finding a sustainable approach that supports your health.
           </p>
