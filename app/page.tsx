@@ -83,6 +83,8 @@ export default function Home() {
       <SiteHeader active="Home" />
 
       <section id="top" className="relative overflow-hidden bg-black text-white">
+        <div className="absolute inset-0 bg-[url('/images/KC_hero_bg.webp')] bg-cover bg-center" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/85" />
         <div className="absolute inset-y-0 left-0 w-2 bg-[#ba0a07]" />
         <div className="absolute -right-24 -top-24 h-80 w-80 rounded-full border-[70px] border-[#ba0a07]/30" />
         <div className="relative mx-auto grid min-h-[390px] max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
