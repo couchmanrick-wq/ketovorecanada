@@ -129,10 +129,10 @@ export default function Home() {
         <div className="relative mx-auto grid min-h-[390px] max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
           <div className="max-w-3xl">
             <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-white/75">A practical path to better health</p>
-            <h1 className="mt-5 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase leading-[0.95] tracking-[0.02em] sm:text-7xl">
-              Carnivore first.
-              <span className="block text-[#ba0a07]">Keto inspired.</span>
-              Built for real life.
+            <h1 className="mt-5 whitespace-nowrap font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-[0.95] tracking-[0.02em] sm:text-4xl lg:text-5xl">
+              <span className="block text-[#ba0a07]">Carnivore first.</span>
+              <span className="block">Keto inspired.</span>
+              <span className="block">Built for real life.</span>
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
               Ketovore Canada brings together practical resources, honest progress, and a personal journey toward simpler food and better health.
