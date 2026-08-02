@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
+import SiteHeader from "@/components/SiteHeader";
+import SiteFooter from "@/components/SiteFooter";
 
 const tabs = [
   {
@@ -67,16 +68,10 @@ const tabs = [
 ];
 
 const journey = [
-  { title: "Who Is Rick", detail: "The guy behind Ketovore Canada" },
+  { title: "Who Is Rick", detail: "The guy behind Ketovore Canada", href: "/rick" },
   { title: "Health Issues", detail: "The challenges that started it" },
   { title: "Daily Log", detail: "The numbers, meals, and movement" },
   { title: "Blog", detail: "Thoughts, lessons along the journey" },
-];
-
-const footerLinks = [
-  { title: "Explore", links: ["What is Ketovore", "Resources", "Recipes"] },
-  { title: "Rick's Journey", links: ["About Rick", "Health issues", "Daily log"] },
-  { title: "Connect", links: ["Newsletter", "YouTube", "Podcasts", "Email"] },
 ];
 
 export default function Home() {
@@ -85,31 +80,7 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
-      <header className="border-b border-black/10 bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-3 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-          <a href="https://ketovorecanada.com/" aria-label="Ketovore Canada home" className="block w-full max-w-[260px]">
-            <Image
-              src="/images/KC_horizontal_logo.webp"
-              alt="Ketovore Canada — Transform, Educate, Inspire"
-              width={1745}
-              height={464}
-              sizes="260px"
-              className="h-auto w-full"
-              priority
-            />
-          </a>
-          <nav aria-label="Primary navigation" className="flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-extrabold">
-            <a href="https://ketovorecanada.com/" className="border-b-2 border-[#ba0a07] py-2">Home</a>
-            <span aria-hidden="true" className="text-black/20">|</span>
-            <a href="#about" className="py-2 transition hover:text-[#ba0a07]">About</a>
-            <span aria-hidden="true" className="text-black/20">|</span>
-            <a href="#resources" className="py-2 transition hover:text-[#ba0a07]">Ketovore Resources</a>
-            <span aria-hidden="true" className="text-black/20">|</span>
-            <a href="#journey" className="py-2 transition hover:text-[#ba0a07]">Rick&apos;s Journey</a>
-            <a href="#newsletter" className="rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</a>
-          </nav>
-        </div>
-      </header>
+      <SiteHeader active="Home" />
 
       <section id="top" className="relative overflow-hidden bg-black text-white">
         <div className="absolute inset-y-0 left-0 w-2 bg-[#ba0a07]" />
@@ -225,7 +196,13 @@ export default function Home() {
                     <div key={item.title} className="grid grid-cols-[28px_1fr] gap-3 border-b border-black/15 py-4">
                       <span className="font-[family-name:var(--font-display)] text-xl font-bold text-[#ba0a07]">{String(index + 1).padStart(2, "0")}</span>
                       <div>
-                        <h3 className="font-extrabold">{item.title}</h3>
+                        {item.href ? (
+                          <h3 className="font-extrabold">
+                            <a href={item.href} className="transition hover:text-[#ba0a07]">{item.title}</a>
+                          </h3>
+                        ) : (
+                          <h3 className="font-extrabold">{item.title}</h3>
+                        )}
                         <p className="mt-1 text-sm text-black/50">{item.detail}</p>
                       </div>
                     </div>
@@ -245,32 +222,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="mt-12 border-t-8 border-[#ba0a07] bg-black text-white">
-        <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 lg:grid-cols-[1.2fr_2fr] lg:px-10">
-          <div>
-            <div className="inline-block rounded-full bg-white p-1.5">
-              <Image src="/images/KC_round_logo.webp" alt="Ketovore Canada" width={1254} height={1254} sizes="92px" className="h-[92px] w-[92px] rounded-full" />
-            </div>
-            <p className="mt-5 max-w-sm leading-7 text-white/60">A practical Canadian resource for carnivore-first eating, metabolic health, useful information, and honest personal change.</p>
-          </div>
-          <div className="grid gap-10 sm:grid-cols-3">
-            {footerLinks.map((group) => (
-              <div key={group.title}>
-                <h2 className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">{group.title}</h2>
-                <ul className="mt-5 space-y-3 text-sm text-white/70">
-                  {group.links.map((link) => <li key={link}><span>{link}</span></li>)}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="border-t border-white/15">
-          <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 text-xs text-white/45 sm:flex-row sm:items-center sm:justify-between lg:px-10">
-            <p>© 2026 Ketovore Canada. All rights reserved.</p>
-            <p>Transform · Educate · Inspire</p>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
