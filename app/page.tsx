@@ -1,69 +1,12 @@
-"use client";
-
-import { useState } from "react";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import Hero from "@/components/Hero";
 
-const tabs = [
+const resourceItems = [
   {
-    id: "news",
-    label: "In The News",
-    items: [
-      {
-        type: null as string | null,
-        title: "Metabolic health research roundup",
-        description: "A running list of studies and headlines relevant to low-carb, keto, and carnivore approaches to health.",
-      },
-    ],
-  },
-  {
-    id: "pods",
-    label: "Pods & Youtube",
-    items: [
-      {
-        type: "Listen",
-        title: "Podcasts",
-        description: "Stories, interviews, and practical guidance from voices across the keto and carnivore communities.",
-      },
-      {
-        type: "Watch",
-        title: "YouTube",
-        description: "Clear video explainers, conversations, and personal experiences with a carnivore-first approach.",
-      },
-    ],
-  },
-  {
-    id: "folks",
-    label: "Folks to Follow",
-    items: [
-      {
-        type: "Follow",
-        title: "Influencers to Follow",
-        description: "A growing list of thoughtful people shaping the low-carb, metabolic health, and carnivore conversation.",
-      },
-    ],
-  },
-  {
-    id: "websites",
-    label: "Websites",
-    items: [
-      {
-        type: "Learn",
-        title: "Trusted Websites",
-        description: "Useful destinations for research, practical guidance, recipes, and fresh inspiration.",
-      },
-    ],
-  },
-  {
-    id: "foodies",
-    label: "Foodies",
-    items: [
-      {
-        type: "Make",
-        title: "Simple Recipes",
-        description: "Straightforward meals built around meat, eggs, butter, and other satisfying high-fat staples.",
-      },
-    ],
+    type: null as string | null,
+    title: "Metabolic health research roundup",
+    description: "A running list of studies and headlines relevant to low-carb, keto, and carnivore approaches to health.",
   },
 ];
 
@@ -75,66 +18,16 @@ const journey = [
 ];
 
 export default function Home() {
-  const [activeTab, setActiveTab] = useState(tabs[0].id);
-  const activeTabData = tabs.find((tab) => tab.id === activeTab) ?? tabs[0];
-
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
-      <SiteHeader active="Home" />
+      <SiteHeader active="Daily News & Views" />
 
-      <section id="top" className="relative overflow-hidden bg-black text-white">
-        <div className="absolute inset-0 bg-[url('/images/KC_hero_bg.webp')] bg-cover bg-center" />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-black/60" />
-        <div className="absolute inset-y-0 left-0 w-2 bg-[#ba0a07]" />
-        <div className="relative mx-auto grid min-h-[390px] max-w-7xl items-center gap-10 px-6 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:px-10">
-          <div className="max-w-3xl">
-            <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-white/75">A practical path to better health</p>
-            <h1 className="mt-5 whitespace-nowrap font-[family-name:var(--font-display)] text-3xl font-extrabold uppercase leading-[0.95] tracking-[0.02em] sm:text-4xl lg:text-5xl">
-              <span className="block text-[#ba0a07]">Carnivore first.</span>
-              <span className="block">Keto inspired.</span>
-              <span className="block">Built for real life.</span>
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
-              Ketovore Canada brings together practical resources, honest progress, and a personal journey toward simpler food and better health.
-            </p>
-          </div>
-          <div id="newsletter" className="scroll-mt-6 justify-self-end lg:max-w-sm lg:justify-self-end">
-            <form
-              onSubmit={(event) => event.preventDefault()}
-              className="w-full rounded-md border-2 border-white/40 bg-[#2a2a2a]/70 p-6 shadow-2xl shadow-black/60 backdrop-blur-sm"
-            >
-              <p className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">
-                <span aria-hidden="true">★</span> Free weekly newsletter
-              </p>
-              <h2 className="mt-3 font-[family-name:var(--font-display)] text-xl font-extrabold leading-snug">
-                News, views &amp; carnivore updates, in your inbox.
-              </h2>
-              <div className="mt-5 flex flex-col gap-2 sm:flex-row">
-                <label htmlFor="hero-newsletter-email" className="sr-only">Email address</label>
-                <input
-                  id="hero-newsletter-email"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="w-full flex-1 border-2 border-white bg-white px-4 py-3 text-sm text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-[#ba0a07]"
-                />
-                <button
-                  type="submit"
-                  className="whitespace-nowrap bg-[#ba0a07] px-4 py-3 text-xs font-extrabold uppercase tracking-[0.1em] text-white transition hover:bg-white hover:text-black focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black focus:ring-white"
-                >
-                  Join free
-                </button>
-              </div>
-              <p className="mt-3 text-xs text-white/70">Free · unsubscribe anytime.</p>
-            </form>
-          </div>
-        </div>
-      </section>
+      <Hero primaryHeading />
 
       <section id="about" className="w-full bg-[#FFEBEE]">
         <div className="mx-auto max-w-7xl px-6 py-8 lg:px-10 lg:py-10">
           <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Start here</p>
-          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-extrabold uppercase tracking-[0.03em]">What is Ketovore?</h2>
+          <h2 className="mt-3 font-[family-name:var(--font-display)] text-[42px] font-extrabold uppercase tracking-[0.03em]">What is Ketovore?</h2>
           <p className="mt-5 text-lg leading-8 text-black/65">
             Ketovore sits at the intersection of carnivore and keto: an animal-food-focused way of eating with very low carbohydrate intake, nourishing fats, and fewer complications. It is less about perfection and more about finding a sustainable approach that supports your health.
           </p>
@@ -146,31 +39,12 @@ export default function Home() {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0">
               <div className="border-b border-black/20 pb-5">
-                <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Explore</p>
-                <h2 className="mt-2 font-[family-name:var(--font-display)] text-5xl font-extrabold uppercase tracking-[0.03em]">Ketovore resources</h2>
+                <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Updated Results 3 Times Daily</p>
+                <h2 className="mt-2 font-[family-name:var(--font-display)] text-[42px] font-extrabold uppercase tracking-[0.03em]">Ketovore Daily News, Views &amp; Video</h2>
               </div>
 
-              <div role="tablist" aria-label="Resource categories" className="mt-8 flex flex-wrap gap-1 rounded-lg border border-black/10 bg-black/[0.03] p-1.5">
-                {tabs.map((tab) => (
-                  <button
-                    key={tab.id}
-                    type="button"
-                    role="tab"
-                    aria-selected={activeTab === tab.id}
-                    onClick={() => setActiveTab(tab.id)}
-                    className={`rounded-md px-4 py-2.5 text-xs font-extrabold uppercase tracking-[0.1em] transition ${
-                      activeTab === tab.id
-                        ? "bg-black text-white shadow-sm"
-                        : "text-black/60 hover:bg-black/5 hover:text-black"
-                    }`}
-                  >
-                    {tab.label}
-                  </button>
-                ))}
-              </div>
-
-              <div role="tabpanel" className="mt-10">
-                {activeTabData.items.map((item) => (
+              <div className="mt-10">
+                {resourceItems.map((item) => (
                   <article key={item.title} className="group grid gap-5 border-b border-black/15 py-9 sm:grid-cols-[1fr_auto] sm:items-center">
                     <div>
                       {item.type ? (
@@ -205,7 +79,7 @@ export default function Home() {
                         ) : (
                           <h3 className="font-extrabold">{item.title}</h3>
                         )}
-                        <p className="mt-1 text-sm text-black/50">{item.detail}</p>
+                        <p className="mt-1 text-sm text-black/65">{item.detail}</p>
                       </div>
                     </div>
                   ))}

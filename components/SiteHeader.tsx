@@ -1,15 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
 const navLinks = [
-  { label: "In The News", href: "/#resources" },
-  { label: "Pods & Youtube", href: "/#resources" },
-  { label: "Folks to Follow", href: "/#resources" },
-  { label: "Websites", href: "/#resources" },
-  { label: "Foodies", href: "/#resources" },
+  { label: "Daily News & Views", href: "/#resources" },
+  { label: "Influencers/Authorities Accts to Follow", href: "/ketovore-links" },
+  { label: "About", href: "/rick" },
 ];
 
 export default function SiteHeader({ active }: { active?: string }) {
@@ -20,10 +18,10 @@ export default function SiteHeader({ active }: { active?: string }) {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3 lg:px-10">
         <Link href="/" aria-label="Ketovore Canada home" className="no-underline block w-full max-w-[200px] lg:max-w-[260px]">
           <Image
-            src="/images/KC_horizontal_logo.webp"
+            src="/images/KC_horizontal_logo-header-final.avif"
             alt="Ketovore Canada — Transform, Educate, Inspire"
-            width={1745}
-            height={464}
+            width={260}
+            height={69}
             sizes="260px"
             className="h-auto w-full"
             priority
@@ -34,20 +32,23 @@ export default function SiteHeader({ active }: { active?: string }) {
           aria-label="Primary navigation"
           className="hidden items-center gap-x-4 text-sm font-extrabold lg:flex"
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className={
-                active === link.label
-                  ? "border-b-2 border-[#ba0a07] py-2"
-                  : "py-2 transition hover:text-[#ba0a07]"
-              }
-            >
-              {link.label}
-            </Link>
+          {navLinks.map((link, index) => (
+            <Fragment key={link.label}>
+              <Link
+                href={link.href}
+                aria-current={active === link.label ? "page" : undefined}
+                className={`no-underline border-b-2 py-2 transition hover:text-[#ba0a07] ${
+                  active === link.label ? "border-[#ba0a07]" : "border-transparent"
+                }`}
+              >
+                {link.label}
+              </Link>
+              {index < navLinks.length - 1 ? (
+                <span aria-hidden="true" className="text-lg leading-none text-[#ba0a07]">•</span>
+              ) : null}
+            </Fragment>
           ))}
-          <Link href="/#newsletter" className="no-underline rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</Link>
+          <Link href="/#newsletter" className="no-underline ml-4 rounded-sm border border-black bg-white px-4 py-2 text-black transition hover:bg-black hover:text-white">Newsletter</Link>
         </nav>
 
         <button
@@ -73,11 +74,10 @@ export default function SiteHeader({ active }: { active?: string }) {
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className={
-                active === link.label
-                  ? "w-fit border-b-2 border-[#ba0a07] py-1"
-                  : "w-fit py-1 transition hover:text-[#ba0a07]"
-              }
+              aria-current={active === link.label ? "page" : undefined}
+              className={`no-underline w-fit border-b-2 py-1 transition hover:text-[#ba0a07] ${
+                active === link.label ? "border-[#ba0a07]" : "border-transparent"
+              }`}
             >
               {link.label}
             </Link>

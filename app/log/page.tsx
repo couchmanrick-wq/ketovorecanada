@@ -4,12 +4,15 @@ import { getCloudflareContext } from "@opennextjs/cloudflare";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import { DAILY_LOG_KV_KEY, MonthData, daysInMonth, formatDate, isEntryFilled, months } from "@/lib/dailyLog";
+import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Daily Log | Ketovore Canada",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Ketovore Daily Health and Food Log",
+  description: "Follow Rick Couchman's daily ketovore log, including weight, steps, workouts, glucose readings, meals, and progress notes.",
+  path: "/log",
+});
 
 async function getDailyLogData(): Promise<Record<string, MonthData>> {
   const { env } = getCloudflareContext();

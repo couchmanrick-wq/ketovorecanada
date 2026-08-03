@@ -1,16 +1,32 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Who Is Rick | Ketovore Canada",
-  description: "Meet Rick Couchman, the guy behind Ketovore Canada, and why he started sharing his carnivore-first, keto-inspired journey.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Who Is Rick? Rick Couchman's Ketovore Journey",
+  description: "Meet Rick Couchman, founder of Ketovore Canada, and learn why he began sharing his practical carnivore-first, keto-inspired health journey.",
+  path: "/rick",
+});
 
 export default function WhoIsRick() {
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
-      <SiteHeader active="Rick's Journey" />
+      <SiteHeader active="About" />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ProfilePage",
+          "@id": `${SITE_URL}/rick#webpage`,
+          url: `${SITE_URL}/rick`,
+          name: "Who Is Rick? Rick Couchman's Ketovore Journey",
+          description: "Meet Rick Couchman, founder of Ketovore Canada, and learn about his carnivore-first, keto-inspired health journey.",
+          inLanguage: "en-CA",
+          mainEntity: { "@id": `${SITE_URL}/rick#person` },
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+        }}
+      />
 
       <section className="relative overflow-hidden bg-black text-white">
         <div className="absolute inset-y-0 left-0 w-2 bg-[#ba0a07]" />
@@ -30,7 +46,7 @@ export default function WhoIsRick() {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0">
               <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Start here</p>
-              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-extrabold uppercase tracking-[0.03em]">My story</h2>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[42px] font-extrabold uppercase tracking-[0.03em]">My story</h2>
               <p className="mt-5 text-lg leading-8 text-black/65">
                 I&apos;m Rick Couchman, a Canadian who went carnivore-first and keto-inspired to take my health back. Ketovore Canada is where I share what&apos;s actually working: the meals, the numbers, and the honest setbacks along the way.
               </p>

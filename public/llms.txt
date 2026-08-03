@@ -1,0 +1,22 @@
+# Ketovore Canada
+
+> Ketovore Canada is a Canadian resource for carnivore-first, keto-inspired eating, metabolic health information, trusted accounts, and Rick Couchman's personal health journey.
+
+Ketovore Canada is created and published by Rick Couchman. The site shares practical resources, personal observations, daily progress data, and links to people and organizations active in the ketovore, carnivore, keto, low-carbohydrate, and metabolic health communities. Personal experiences on this site are informational and are not medical advice.
+
+## Primary Pages
+
+- [Ketovore Canada Home](https://ketovorecanada.com/): Introduction to the ketovore approach plus frequently updated news, views, and video resources.
+- [Ketovore and Carnivore Influencers and Authorities](https://ketovorecanada.com/ketovore-links): Alphabetical directory of relevant websites, Instagram accounts, Facebook pages, YouTube channels, TikTok accounts, and podcasts.
+
+## About and Personal Journey
+
+- [About Rick Couchman](https://ketovorecanada.com/rick): Background on the founder of Ketovore Canada and his carnivore-first, keto-inspired journey.
+- [Health Issues](https://ketovorecanada.com/issues): The health challenges and personal circumstances that motivated Rick's dietary and lifestyle changes.
+- [Daily Health and Food Log](https://ketovorecanada.com/log): Rick's public log of weight, activity, workouts, glucose readings, meals, and progress notes.
+- [Ketovore Blog](https://ketovorecanada.com/blog): Personal lessons and observations about carnivore, keto, ketovore eating, and metabolic health.
+
+## Discovery Files
+
+- [XML Sitemap](https://ketovorecanada.com/sitemap.xml): Index of public pages intended for crawling.
+- [Robots Policy](https://ketovorecanada.com/robots.txt): Crawler access rules; public content is allowed and protected admin routes are excluded.

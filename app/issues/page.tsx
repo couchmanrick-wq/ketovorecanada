@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Health Issues | Ketovore Canada",
-  description: "The health challenges that started Rick's carnivore-first, keto-inspired journey.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Health Issues That Started Rick's Ketovore Journey",
+  description: "Read about the health challenges, symptoms, and lab results that led Rick Couchman toward a carnivore-first, keto-inspired way of eating.",
+  path: "/issues",
+});
 
 export default function HealthIssues() {
   return (
@@ -30,7 +32,7 @@ export default function HealthIssues() {
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_340px]">
             <div className="min-w-0">
               <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Where it started</p>
-              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[48px] font-extrabold uppercase tracking-[0.03em]">The wake-up call</h2>
+              <h2 className="mt-3 font-[family-name:var(--font-display)] text-[42px] font-extrabold uppercase tracking-[0.03em]">The wake-up call</h2>
               <p className="mt-5 text-lg leading-8 text-black/65">
                 Before Ketovore Canada, there were the health issues that forced a change: the labs, the symptoms, and the honest reckoning with how I&apos;d been eating and living.
               </p>

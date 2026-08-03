@@ -1,8 +1,10 @@
 "use client";
 
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import KetovoreLinksPanel from "@/components/admin/KetovoreLinksPanel";
 import {
   DayEntry,
   MonthData,
@@ -23,6 +25,7 @@ const navTabs = [
   { id: "health", label: "Health" },
   { id: "crm", label: "CRM" },
   { id: "daily-log", label: "Daily Log" },
+  { id: "resource-links", label: "Resource Links" },
 ];
 
 export default function Admin() {
@@ -60,17 +63,19 @@ export default function Admin() {
                 )
               )}
 
-              <a
+              <Link
                 href="/"
                 className="no-underline ml-auto rounded-full bg-[#ba0a07] px-5 py-2 text-sm font-extrabold text-white transition hover:bg-black"
               >
                 Log out
-              </a>
+              </Link>
             </div>
           </div>
 
           <div className="mt-8">
-            {activeTab === "daily-log" ? (
+            {activeTab === "resource-links" ? (
+              <KetovoreLinksPanel />
+            ) : activeTab === "daily-log" ? (
               <DailyLogPanel />
             ) : activeTab === "today" ? (
               <div className="rounded-sm border border-black/15 bg-white p-6">

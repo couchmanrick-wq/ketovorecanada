@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import { pageMetadata, SITE_URL } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Blog | Ketovore Canada",
-  description: "Thoughts and lessons along Rick's carnivore-first, keto-inspired journey.",
-};
+export const metadata: Metadata = pageMetadata({
+  title: "Ketovore Blog: Carnivore, Keto and Metabolic Health",
+  description: "Read practical lessons, personal results, and honest observations from Rick Couchman's carnivore-first, keto-inspired health journey.",
+  path: "/blog",
+});
 
 const posts = [
   {
@@ -29,6 +32,32 @@ export default function Blog() {
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
       <SiteHeader active="Blog" />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": `${SITE_URL}/blog#webpage`,
+          url: `${SITE_URL}/blog`,
+          name: "Ketovore Blog: Carnivore, Keto and Metabolic Health",
+          description: "Practical lessons and personal observations from Rick Couchman's carnivore-first, keto-inspired health journey.",
+          inLanguage: "en-CA",
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          mainEntity: {
+            "@type": "ItemList",
+            itemListElement: posts.map((post, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "CreativeWork",
+                name: post.title,
+                description: post.excerpt,
+                dateCreated: post.date,
+                author: { "@id": `${SITE_URL}/rick#person` },
+              },
+            })),
+          },
+        }}
+      />
 
       <section className="relative overflow-hidden bg-black text-white">
         <div className="absolute inset-y-0 left-0 w-2 bg-[#ba0a07]" />
