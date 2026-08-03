@@ -70,6 +70,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en-CA" className={`${montserrat.variable} ${roboto.variable} h-full antialiased`}>
+      <head>
+        <link rel="preconnect" href="https://static.cloudflareinsights.com" />
+      </head>
       <body className="min-h-full flex flex-col">
         <JsonLd
           data={{
