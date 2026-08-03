@@ -9,6 +9,7 @@ export type KetovoreLink = {
   youtube: string;
   tiktok: string;
   podcast: string;
+  spotifyPodcast: string;
 };
 
 export const emptyKetovoreLink: KetovoreLink = {
@@ -20,6 +21,7 @@ export const emptyKetovoreLink: KetovoreLink = {
   youtube: "",
   tiktok: "",
   podcast: "",
+  spotifyPodcast: "",
 };
 
 export const ketovoreLinkFields: Array<{
@@ -33,6 +35,7 @@ export const ketovoreLinkFields: Array<{
   { key: "youtube", label: "YouTube" },
   { key: "tiktok", label: "TikTok" },
   { key: "podcast", label: "Podcast" },
+  { key: "spotifyPodcast", label: "Spotify Podcast" },
 ];
 
 export function sanitizeKetovoreLinks(value: unknown): KetovoreLink[] {
@@ -52,6 +55,7 @@ export function sanitizeKetovoreLinks(value: unknown): KetovoreLink[] {
       youtube: text("youtube", 2048),
       tiktok: text("tiktok", 2048),
       podcast: text("podcast", 2048),
+      spotifyPodcast: text("spotifyPodcast", 2048),
     };
   });
 }
