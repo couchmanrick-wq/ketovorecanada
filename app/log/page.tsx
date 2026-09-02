@@ -61,7 +61,7 @@ export default async function DailyLog() {
             monthsWithEntries.map((m) => (
               <div key={m.id} className="mb-12">
                 <h2 className="font-[family-name:var(--font-display)] text-xl font-extrabold uppercase tracking-[0.02em]">
-                  {m.label}
+                  {m.id === months[0].id ? "Start Date: September 1, 2026" : m.label}
                 </h2>
                 <div className="mt-4 overflow-x-auto">
                   <table className="w-full min-w-[800px] border-collapse text-sm">
