@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { DAILY_LOG_KV_KEY, MonthData, daysInMonth, formatDate, isEntryFilled, months } from "@/lib/dailyLog";
+import { DAILY_LOG_KV_KEY, MonthData, baselineWeight, daysInMonth, formatDate, formatWeightDelta, isEntryFilled, months, parseWeight } from "@/lib/dailyLog";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -23,6 +23,7 @@ async function getDailyLogData(): Promise<Record<string, MonthData>> {
 
 export default async function DailyLog() {
   const data = await getDailyLogData();
+  const baseline = baselineWeight(data);
 
   const monthsWithEntries = months
     .map((m) => {
@@ -68,6 +69,7 @@ export default async function DailyLog() {
                       <tr className="border-b-2 border-black text-left text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
                         <th className="py-3 pr-4">Date</th>
                         <th className="py-3 pr-4">Weight</th>
+                        <th className="py-3 pr-4">+/-</th>
                         <th className="py-3 pr-4">Steps Walked</th>
                         <th className="py-3 pr-4 text-center">Gym Workout</th>
                         <th className="py-3 pr-4">Avg Glucose</th>
@@ -81,12 +83,24 @@ export default async function DailyLog() {
                               {formatDate(m.year, m.month, day)}
                             </td>
                             <td className="py-2 pr-4">{entry!.weight || "—"}</td>
+                            <td className="py-2 pr-4 tabular-nums font-semibold">
+                              {(() => {
+                                const w = parseWeight(entry!.weight);
+                                if (w === null || baseline === null) return "—";
+                                const delta = w - baseline;
+                                return (
+                                  <span className={delta > 0 ? "text-[#ba0a07]" : delta < 0 ? "text-green-700" : "text-black/60"}>
+                                    {formatWeightDelta(delta)}
+                                  </span>
+                                );
+                              })()}
+                            </td>
                             <td className="py-2 pr-4">{entry!.steps || "—"}</td>
                             <td className="py-2 pr-4 text-center">{entry!.gym ? "✓" : "—"}</td>
                             <td className="py-2 pr-4">{entry!.avgGlucose || "—"}</td>
                           </tr>
                           <tr className="border-b border-black/10 align-top">
-                            <td colSpan={5} className="pb-2 pr-4 text-black/60">
+                            <td colSpan={6} className="pb-2 pr-4 text-black/60">
                               <span className="font-semibold text-black/80">Notes:</span> {entry!.notes || "—"}
                             </td>
                           </tr>

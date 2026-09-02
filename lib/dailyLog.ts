@@ -62,3 +62,31 @@ export function isEntryFilled(entry: DayEntry) {
     entry.weight || entry.steps || entry.gym || entry.avgGlucose || entry.notes
   );
 }
+
+export function parseWeight(value: string): number | null {
+  const n = parseFloat(value);
+  return Number.isFinite(n) ? n : null;
+}
+
+/**
+ * The starting weight for the +/- running total: the earliest recorded weight
+ * across all tracked months (the log starts September 1, 2026).
+ */
+export function baselineWeight(data: Record<string, MonthData>): number | null {
+  for (const m of months) {
+    const monthData = data[m.id] ?? {};
+    const numDays = daysInMonth(m.year, m.month);
+    for (let day = 1; day <= numDays; day++) {
+      const w = parseWeight(monthData[String(day)]?.weight ?? "");
+      if (w !== null) return w;
+    }
+  }
+  return null;
+}
+
+/** Formats a weight delta with an explicit sign, e.g. "+1.2", "-0.8", "0.0". */
+export function formatWeightDelta(delta: number): string {
+  const rounded = Math.round(delta * 10) / 10;
+  const sign = rounded > 0 ? "+" : rounded < 0 ? "-" : "";
+  return `${sign}${Math.abs(rounded).toFixed(1)}`;
+}

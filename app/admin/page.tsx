@@ -8,11 +8,14 @@ import KetovoreLinksPanel from "@/components/admin/KetovoreLinksPanel";
 import {
   DayEntry,
   MonthData,
+  baselineWeight,
   daysInMonth,
   emptyEntry,
   fetchDailyLog,
   formatDate,
+  formatWeightDelta,
   months,
+  parseWeight,
   saveDailyLog,
 } from "@/lib/dailyLog";
 
@@ -116,6 +119,7 @@ function DailyLogPanel() {
 
   const numDays = daysInMonth(activeMonthMeta.year, activeMonthMeta.month);
   const monthData = data[activeMonth] ?? {};
+  const baseline = baselineWeight(data);
 
   function updateEntry(dayKey: string, patch: Partial<DayEntry>) {
     setData((prev) => {
@@ -178,6 +182,7 @@ function DailyLogPanel() {
             <tr className="border-b-2 border-black text-left text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
               <th className="py-3 pr-4">Date</th>
               <th className="py-3 pr-2">Weight</th>
+              <th className="py-3 pr-2">+/-</th>
               <th className="py-3 pr-2">Steps Walked</th>
               <th className="py-3 pr-2">Gym Workout</th>
               <th className="py-3 pr-4">Avg Glucose</th>
@@ -202,6 +207,18 @@ function DailyLogPanel() {
                         placeholder="lbs"
                         className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       />
+                    </td>
+                    <td className="py-2 pr-2 whitespace-nowrap font-semibold tabular-nums">
+                      {(() => {
+                        const w = parseWeight(entry.weight);
+                        if (w === null || baseline === null) return <span className="text-black/40">—</span>;
+                        const delta = w - baseline;
+                        return (
+                          <span className={delta > 0 ? "text-[#ba0a07]" : delta < 0 ? "text-green-700" : "text-black/60"}>
+                            {formatWeightDelta(delta)}
+                          </span>
+                        );
+                      })()}
                     </td>
                     <td className="py-2 pr-2">
                       <input
@@ -235,7 +252,7 @@ function DailyLogPanel() {
                     </td>
                   </tr>
                   <tr className="border-b border-black/10 align-top">
-                    <td colSpan={5} className="py-2 pr-4">
+                    <td colSpan={6} className="py-2 pr-4">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
                           Notes:
