@@ -9,8 +9,8 @@ import { pageMetadata } from "@/lib/seo";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
-  title: "Ketovore Daily Health and Food Log",
-  description: "Follow Rick Couchman's daily ketovore log, including weight, steps, workouts, glucose readings, meals, and progress notes.",
+  title: "Ketovore Daily Health Log",
+  description: "Follow Rick Couchman's daily ketovore log, including weight, steps, workouts, glucose readings, and progress notes.",
   path: "/log",
 });
 
@@ -47,7 +47,7 @@ export default async function DailyLog() {
             Daily <span className="text-[#ba0a07]">Log</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-white/75">
-            Weight, steps, workouts, mood, and meals — day by day.
+            Weight, steps, workouts, glucose, and notes — day by day.
           </p>
         </div>
       </section>
@@ -71,7 +71,6 @@ export default async function DailyLog() {
                         <th className="py-3 pr-4">Steps Walked</th>
                         <th className="py-3 pr-4 text-center">Gym Workout</th>
                         <th className="py-3 pr-4">Avg Glucose</th>
-                        <th className="py-3 pr-4">Food Diary</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -85,10 +84,9 @@ export default async function DailyLog() {
                             <td className="py-2 pr-4">{entry!.steps || "—"}</td>
                             <td className="py-2 pr-4 text-center">{entry!.gym ? "✓" : "—"}</td>
                             <td className="py-2 pr-4">{entry!.avgGlucose || "—"}</td>
-                            <td className="py-2 pr-4">{entry!.food || "—"}</td>
                           </tr>
                           <tr className="border-b border-black/10 align-top">
-                            <td colSpan={6} className="pb-2 pr-4 text-black/60">
+                            <td colSpan={5} className="pb-2 pr-4 text-black/60">
                               <span className="font-semibold text-black/80">Notes:</span> {entry!.notes || "—"}
                             </td>
                           </tr>

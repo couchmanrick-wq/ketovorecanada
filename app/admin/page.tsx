@@ -181,7 +181,6 @@ function DailyLogPanel() {
               <th className="py-3 pr-2">Steps Walked</th>
               <th className="py-3 pr-2">Gym Workout</th>
               <th className="py-3 pr-4">Avg Glucose</th>
-              <th className="py-3 pr-4">Food Diary</th>
             </tr>
           </thead>
           <tbody>
@@ -234,18 +233,9 @@ function DailyLogPanel() {
                         className="w-16 rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
                       />
                     </td>
-                    <td className="py-2 pr-4">
-                      <input
-                        type="text"
-                        value={entry.food}
-                        onChange={(e) => updateEntry(dayKey, { food: e.target.value })}
-                        placeholder="What did you eat today?"
-                        className="w-full min-w-[320px] rounded-sm border border-black/15 bg-white px-2 py-1 focus:border-[#ba0a07] focus:outline-none"
-                      />
-                    </td>
                   </tr>
                   <tr className="border-b border-black/10 align-top">
-                    <td colSpan={6} className="py-2 pr-4">
+                    <td colSpan={5} className="py-2 pr-4">
                       <div className="flex flex-wrap items-center gap-2">
                         <span className="whitespace-nowrap text-xs font-extrabold uppercase tracking-[0.15em] text-black/60">
                           Notes:

@@ -1,5 +1,4 @@
 export const months = [
-  { id: "2026-08", label: "Aug 26", year: 2026, month: 7 },
   { id: "2026-09", label: "Sept 26", year: 2026, month: 8 },
   { id: "2026-10", label: "Oct 26", year: 2026, month: 9 },
   { id: "2026-11", label: "Nov 26", year: 2026, month: 10 },
@@ -11,7 +10,6 @@ export type DayEntry = {
   steps: string;
   gym: boolean;
   avgGlucose: string;
-  food: string;
   notes: string;
 };
 
@@ -22,7 +20,6 @@ export const emptyEntry: DayEntry = {
   steps: "",
   gym: false,
   avgGlucose: "",
-  food: "",
   notes: "",
 };
 
@@ -62,6 +59,6 @@ export async function saveDailyLog(data: Record<string, MonthData>): Promise<boo
 
 export function isEntryFilled(entry: DayEntry) {
   return Boolean(
-    entry.weight || entry.steps || entry.gym || entry.avgGlucose || entry.food || entry.notes
+    entry.weight || entry.steps || entry.gym || entry.avgGlucose || entry.notes
   );
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import JsonLd from "@/components/JsonLd";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
@@ -9,6 +10,13 @@ export const metadata: Metadata = pageMetadata({
   description: "Meet Rick Couchman, founder of Ketovore Canada, and learn why he began sharing his practical carnivore-first, keto-inspired health journey.",
   path: "/rick",
 });
+
+const journeyLinks = [
+  { title: "Who Is Rick", detail: "The guy behind Ketovore Canada", href: "/rick" },
+  { title: "Health Issues", detail: "The challenges that started it", href: "/issues" },
+  { title: "Daily Log", detail: "The numbers, meals, and movement", href: "/log" },
+  { title: "Blog", detail: "Thoughts, lessons along the journey", href: "/blog" },
+];
 
 export default function WhoIsRick() {
   return (
@@ -55,7 +63,35 @@ export default function WhoIsRick() {
               </p>
             </div>
 
-            <aside className="space-y-10 bg-[#f0f0f0] p-6">
+            <aside aria-label="About Rick Couchman" className="space-y-10 bg-[#f0f0f0] p-6">
+              <nav aria-label="Rick Couchman pages">
+                <p className="text-xs font-extrabold uppercase tracking-[0.3em] text-[#ba0a07]">Meet the site owner</p>
+                <h2 className="mt-3 font-[family-name:var(--font-display)] text-[22px] font-extrabold uppercase leading-tight tracking-[0.04em]">
+                  About Rick Couchman
+                </h2>
+                <ol className="mt-5">
+                  {journeyLinks.map((item, index) => (
+                    <li key={item.href} className="grid grid-cols-[28px_1fr] gap-3 border-b border-black/15 py-4 first:pt-3">
+                      <span aria-hidden="true" className="font-[family-name:var(--font-display)] text-xl font-bold text-[#ba0a07]">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <div>
+                        <h3 className="font-extrabold">
+                          <Link
+                            href={item.href}
+                            aria-current={item.href === "/rick" ? "page" : undefined}
+                            className="underline decoration-[#ba0a07] decoration-1 underline-offset-4 transition hover:text-[#ba0a07]"
+                          >
+                            {item.title}
+                          </Link>
+                        </h3>
+                        <p className="mt-1 text-sm leading-5 text-black/65">{item.detail}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+
               <section className="border-t-4 border-black pt-5">
                 <p className="text-xs font-extrabold uppercase tracking-[0.22em] text-[#ba0a07]">Rick&apos;s focus for Ketovore Canada</p>
                 <blockquote className="mt-4 font-[family-name:var(--font-display)] text-[22px] font-extrabold uppercase leading-tight tracking-[0.03em]">

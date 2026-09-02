@@ -7,6 +7,8 @@ export type KetovoreLink = {
   instagram: string;
   facebook: string;
   youtube: string;
+  twitter: string;
+  linkedin: string;
   tiktok: string;
   podcast: string;
   spotifyPodcast: string;
@@ -19,6 +21,8 @@ export const emptyKetovoreLink: KetovoreLink = {
   instagram: "",
   facebook: "",
   youtube: "",
+  twitter: "",
+  linkedin: "",
   tiktok: "",
   podcast: "",
   spotifyPodcast: "",
@@ -33,8 +37,10 @@ export const ketovoreLinkFields: Array<{
   { key: "instagram", label: "Instagram" },
   { key: "facebook", label: "Facebook" },
   { key: "youtube", label: "YouTube" },
+  { key: "twitter", label: "X / Twitter" },
+  { key: "linkedin", label: "LinkedIn" },
   { key: "tiktok", label: "TikTok" },
-  { key: "podcast", label: "Podcast" },
+  { key: "podcast", label: "Apple Podcast" },
   { key: "spotifyPodcast", label: "Spotify Podcast" },
 ];
 
@@ -53,6 +59,8 @@ export function sanitizeKetovoreLinks(value: unknown): KetovoreLink[] {
       instagram: text("instagram", 2048),
       facebook: text("facebook", 2048),
       youtube: text("youtube", 2048),
+      twitter: text("twitter", 2048),
+      linkedin: text("linkedin", 2048),
       tiktok: text("tiktok", 2048),
       podcast: text("podcast", 2048),
       spotifyPodcast: text("spotifyPodcast", 2048),
