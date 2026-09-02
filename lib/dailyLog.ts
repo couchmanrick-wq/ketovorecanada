@@ -25,6 +25,24 @@ export const emptyEntry: DayEntry = {
 
 export const DAILY_LOG_KV_KEY = "kc-daily-log";
 
+/** Rolling snapshot of the last-known-good value, overwritten on every save. */
+export const DAILY_LOG_BACKUP_LATEST_KEY = "kc-daily-log-backup-latest";
+
+/** Per-day backup key, e.g. "kc-daily-log-backup-20260902" (holds that day's first pre-edit snapshot). */
+export function dailyLogDatedBackupKey(date: Date = new Date()) {
+  return `kc-daily-log-backup-${date.toISOString().slice(0, 10).replace(/-/g, "")}`;
+}
+
+export function countFilledEntries(data: Record<string, MonthData>): number {
+  let n = 0;
+  for (const month of Object.values(data ?? {})) {
+    for (const entry of Object.values(month ?? {})) {
+      if (entry && isEntryFilled(entry)) n += 1;
+    }
+  }
+  return n;
+}
+
 export function daysInMonth(year: number, month: number) {
   return new Date(year, month + 1, 0).getDate();
 }
