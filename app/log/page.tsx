@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
-import { DAILY_LOG_KV_KEY, MonthData, baselineWeight, daysInMonth, formatDate, formatWeightDelta, isEntryFilled, months, parseWeight } from "@/lib/dailyLog";
+import { DAILY_LOG_KV_KEY, MonthData, baselineWeight, formatDate, formatWeightDelta, isEntryFilled, monthDays, months, parseWeight } from "@/lib/dailyLog";
 import { pageMetadata } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
@@ -28,8 +28,7 @@ export default async function DailyLog() {
   const monthsWithEntries = months
     .map((m) => {
       const monthData = data[m.id] ?? {};
-      const numDays = daysInMonth(m.year, m.month);
-      const rows = Array.from({ length: numDays }, (_, i) => i + 1)
+      const rows = monthDays(m)
         .map((day) => ({ day, entry: monthData[String(day)] }))
         .filter((row) => row.entry && isEntryFilled(row.entry));
       return { ...m, rows };
@@ -61,7 +60,7 @@ export default async function DailyLog() {
             monthsWithEntries.map((m) => (
               <div key={m.id} className="mb-12">
                 <h2 className="font-[family-name:var(--font-display)] text-xl font-extrabold uppercase tracking-[0.02em]">
-                  {m.id === months[0].id ? "Start Date: September 1, 2026" : m.label}
+                  {m.id === months[0].id ? "Start Date: August 29, 2026" : m.label}
                 </h2>
                 <div className="mt-4 overflow-x-auto">
                   <table className="w-full min-w-[800px] border-collapse text-sm">

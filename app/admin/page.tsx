@@ -9,11 +9,11 @@ import {
   DayEntry,
   MonthData,
   baselineWeight,
-  daysInMonth,
   emptyEntry,
   fetchDailyLog,
   formatDate,
   formatWeightDelta,
+  monthDays,
   months,
   parseWeight,
   saveDailyLog,
@@ -117,7 +117,7 @@ function DailyLogPanel() {
     [activeMonth]
   );
 
-  const numDays = daysInMonth(activeMonthMeta.year, activeMonthMeta.month);
+  const dayList = monthDays(activeMonthMeta);
   const monthData = data[activeMonth] ?? {};
   const baseline = baselineWeight(data);
 
@@ -189,7 +189,7 @@ function DailyLogPanel() {
             </tr>
           </thead>
           <tbody>
-            {Array.from({ length: numDays }, (_, i) => i + 1).map((day) => {
+            {dayList.map((day) => {
               const dayKey = String(day);
               const entry = monthData[dayKey] ?? emptyEntry;
               return (

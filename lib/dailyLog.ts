@@ -1,9 +1,24 @@
-export const months = [
+export type MonthMeta = {
+  id: string;
+  label: string;
+  year: number;
+  month: number;
+  /** Optional explicit day list. When set, only these days are shown/tracked. */
+  days?: number[];
+};
+
+export const months: MonthMeta[] = [
+  { id: "2026-08", label: "Aug 26", year: 2026, month: 7, days: [29] },
   { id: "2026-09", label: "Sept 26", year: 2026, month: 8 },
   { id: "2026-10", label: "Oct 26", year: 2026, month: 9 },
   { id: "2026-11", label: "Nov 26", year: 2026, month: 10 },
   { id: "2026-12", label: "Dec 26", year: 2026, month: 11 },
 ];
+
+/** The days to display/track for a month — an explicit list if given, else every day. */
+export function monthDays(m: MonthMeta): number[] {
+  return m.days ?? Array.from({ length: daysInMonth(m.year, m.month) }, (_, i) => i + 1);
+}
 
 export type DayEntry = {
   weight: string;
@@ -88,13 +103,12 @@ export function parseWeight(value: string): number | null {
 
 /**
  * The starting weight for the +/- running total: the earliest recorded weight
- * across all tracked months (the log starts September 1, 2026).
+ * across all tracked months (the log starts August 29, 2026).
  */
 export function baselineWeight(data: Record<string, MonthData>): number | null {
   for (const m of months) {
     const monthData = data[m.id] ?? {};
-    const numDays = daysInMonth(m.year, m.month);
-    for (let day = 1; day <= numDays; day++) {
+    for (const day of monthDays(m)) {
       const w = parseWeight(monthData[String(day)]?.weight ?? "");
       if (w !== null) return w;
     }
