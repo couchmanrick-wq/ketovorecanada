@@ -34,7 +34,21 @@ function FeedCard({ item }: { item: FeedItem }) {
       ) : null}
 
       <div className="mt-5 flex flex-wrap items-center justify-between gap-2 text-xs font-semibold text-black/45">
-        <span className="uppercase tracking-[0.1em] text-black/60">{item.source}</span>
+        <span className="uppercase tracking-[0.1em] text-black/60">
+          {item.sourcePrefix ? <span className="text-black/45">{item.sourcePrefix} </span> : null}
+          {item.sourceUrl ? (
+            <a
+              href={item.sourceUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-black/60 underline decoration-black/20 underline-offset-2 transition hover:text-[#ba0a07]"
+            >
+              {item.source}
+            </a>
+          ) : (
+            item.source
+          )}
+        </span>
         {time ? (
           <time dateTime={item.publishedAt ?? undefined}>{time}</time>
         ) : null}

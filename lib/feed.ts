@@ -14,6 +14,10 @@ export type FeedItem = {
   href: string;
   external: boolean;
   publishedAt: string | null;
+  /** Label shown before the source, e.g. "Youtube Account:" */
+  sourcePrefix?: string;
+  /** If set, the source name links here (opens in a new tab) */
+  sourceUrl?: string;
 };
 
 const blogItem = (p: (typeof blogPosts)[number]): FeedItem => ({
@@ -49,6 +53,8 @@ export async function getVideoFeed(
       href: v.url,
       external: true,
       publishedAt: v.publishedAt,
+      sourcePrefix: "Youtube Account:",
+      sourceUrl: `https://www.youtube.com/channel/${v.channelId}`,
     })),
   };
 }
