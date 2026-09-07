@@ -50,7 +50,7 @@ function FeedCard({ item }: { item: FeedItem }) {
 
       <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-black/10 pt-3 text-xs font-bold">
         <Link href={`${item.detailHref}#comments`} className="text-[#ba0a07] no-underline hover:underline">
-          Comments
+          {item.commentCount ? `${item.commentCount} Comment${item.commentCount === 1 ? "" : "s"}` : "Add a comment"}
         </Link>
         {item.external ? (
           <a

@@ -1,4 +1,5 @@
 import { blogPosts } from "@/lib/blog";
+import { getCommentCounts } from "@/lib/comments";
 import { getNewsArticles } from "@/lib/news";
 import { getAggregatedVideos } from "@/lib/videos";
 
@@ -6,6 +7,8 @@ export type FeedContentType = "news" | "video" | "blog";
 
 export type FeedItem = {
   id: string;
+  /** The comments target id (video_id / article id / blog slug) */
+  targetId: string;
   contentType: FeedContentType;
   /** Publisher / channel / "Ketovore Canada" */
   source: string;
@@ -21,10 +24,21 @@ export type FeedItem = {
   sourcePrefix?: string;
   /** If set, the source name links here (opens in a new tab) */
   sourceUrl?: string;
+  /** Published comment count (filled in by withCommentCounts) */
+  commentCount?: number;
 };
+
+/** Attach published comment counts to a list of feed items in one query. */
+export async function withCommentCounts(items: FeedItem[]): Promise<FeedItem[]> {
+  const counts = await getCommentCounts(
+    items.map((i) => ({ type: i.contentType, id: i.targetId })),
+  );
+  return items.map((i) => ({ ...i, commentCount: counts.get(`${i.contentType}:${i.targetId}`) ?? 0 }));
+}
 
 const blogItem = (p: (typeof blogPosts)[number]): FeedItem => ({
   id: `blog:${p.slug}`,
+  targetId: p.slug,
   contentType: "blog",
   source: "Ketovore Canada",
   title: p.title,
@@ -50,6 +64,7 @@ export async function getNewsFeed(
     total,
     items: articles.map((a) => ({
       id: `news:${a.id}`,
+      targetId: String(a.id),
       contentType: "news" as const,
       source: a.sourceName,
       title: a.title,
@@ -71,6 +86,7 @@ export async function getVideoFeed(
     total,
     items: videos.map((v) => ({
       id: `video:${v.videoId}`,
+      targetId: v.videoId,
       contentType: "video" as const,
       source: v.channelName,
       title: v.title,
@@ -104,7 +120,7 @@ export async function getCombinedFeed(
   const start = (current - 1) * pageSize;
 
   return {
-    items: all.slice(start, start + pageSize),
+    items: await withCommentCounts(all.slice(start, start + pageSize)),
     page: current,
     pageCount,
     total,

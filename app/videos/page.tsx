@@ -7,7 +7,7 @@ import FilterNav from "@/components/FilterNav";
 import FeedList from "@/components/FeedList";
 import FeedPagination from "@/components/FeedPagination";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
-import { getVideoFeed } from "@/lib/feed";
+import { getVideoFeed, withCommentCounts } from "@/lib/feed";
 
 export const dynamic = "force-dynamic";
 
@@ -29,7 +29,8 @@ export default async function VideosPage({
   const { page: pageParam } = await searchParams;
   const page = Math.max(1, Number.parseInt(pageParam ?? "1", 10) || 1);
 
-  const { items, total } = await getVideoFeed(PAGE_SIZE, (page - 1) * PAGE_SIZE);
+  const { items: rawItems, total } = await getVideoFeed(PAGE_SIZE, (page - 1) * PAGE_SIZE);
+  const items = await withCommentCounts(rawItems);
   const pageCount = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   return (

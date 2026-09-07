@@ -5,8 +5,10 @@ import SiteFooter from "@/components/SiteFooter";
 import FilterNav from "@/components/FilterNav";
 import FeedList from "@/components/FeedList";
 import { pageMetadata, SITE_URL } from "@/lib/seo";
-import { getBlogFeed } from "@/lib/feed";
+import { getBlogFeed, withCommentCounts } from "@/lib/feed";
 import { blogPosts } from "@/lib/blog";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = pageMetadata({
   title: "Ketovore Blog: Carnivore, Keto and Metabolic Health",
@@ -15,8 +17,8 @@ export const metadata: Metadata = pageMetadata({
   path: "/blogs",
 });
 
-export default function BlogsPage() {
-  const items = getBlogFeed();
+export default async function BlogsPage() {
+  const items = await withCommentCounts(getBlogFeed());
 
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">

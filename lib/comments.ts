@@ -123,6 +123,37 @@ export async function getCommentCount(
   }
 }
 
+/** Published-comment counts for many targets in one query. Key: `${type}:${id}`. */
+export async function getCommentCounts(
+  targets: Array<{ type: CommentTargetType; id: string }>,
+): Promise<Map<string, number>> {
+  const counts = new Map<string, number>();
+  try {
+    const db = commentEnv().DB;
+    if (!db || targets.length === 0) return counts;
+
+    const byType: Record<string, string[]> = {};
+    for (const t of targets) (byType[t.type] ??= []).push(t.id);
+
+    for (const [type, ids] of Object.entries(byType)) {
+      const unique = [...new Set(ids)];
+      const placeholders = unique.map(() => "?").join(",");
+      const { results } = await db
+        .prepare(
+          `SELECT target_id, COUNT(*) AS n FROM comments
+           WHERE status = 'published' AND target_type = ? AND target_id IN (${placeholders})
+           GROUP BY target_id`,
+        )
+        .bind(type, ...unique)
+        .all<{ target_id: string; n: number }>();
+      for (const r of results ?? []) counts.set(`${type}:${r.target_id}`, r.n);
+    }
+  } catch (error) {
+    console.error("getCommentCounts failed", error);
+  }
+  return counts;
+}
+
 export async function isEmailVerified(email: string): Promise<boolean> {
   try {
     const db = commentEnv().DB;
