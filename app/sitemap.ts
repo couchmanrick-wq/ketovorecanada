@@ -11,7 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/ketovore-links`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${SITE_URL}/rick`, lastModified, changeFrequency: "monthly", priority: 0.7 },
     { url: `${SITE_URL}/issues`, lastModified, changeFrequency: "monthly", priority: 0.7 },
-    { url: `${SITE_URL}/blog`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/blogs`, lastModified, changeFrequency: "weekly", priority: 0.8 },
+    { url: `${SITE_URL}/videos`, lastModified, changeFrequency: "hourly", priority: 0.8 },
+    { url: `${SITE_URL}/news`, lastModified, changeFrequency: "daily", priority: 0.6 },
     { url: `${SITE_URL}/log`, lastModified, changeFrequency: "daily", priority: 0.6 },
   ];
 }

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const footerLinks = [
-  { title: "Explore", links: [{ label: "What is Ketovore", href: "/#about" }, { label: "Daily News & Views", href: "/#resources" }, { label: "Influencers & Authorities", href: "/ketovore-links" }, { label: "Blog", href: "/blog" }] },
+  { title: "Explore", links: [{ label: "What is Ketovore", href: "/#about" }, { label: "Daily News & Views", href: "/#resources" }, { label: "Influencers & Authorities", href: "/ketovore-links" }, { label: "Blog", href: "/blogs" }] },
   { title: "Rick's Journey", links: [{ label: "About Rick", href: "/rick" }, { label: "Health issues", href: "/issues" }, { label: "Daily log", href: "/log" }] },
   { title: "Connect", links: [{ label: "Newsletter", href: "/#newsletter" }] },
 ];

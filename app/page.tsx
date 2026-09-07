@@ -1,23 +1,29 @@
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import Hero from "@/components/Hero";
+import FilterNav from "@/components/FilterNav";
+import FeedList from "@/components/FeedList";
+import FeedPagination from "@/components/FeedPagination";
+import { getCombinedFeed } from "@/lib/feed";
 
-const resourceItems = [
-  {
-    type: null as string | null,
-    title: "Metabolic health research roundup",
-    description: "A running list of studies and headlines relevant to low-carb, keto, and carnivore approaches to health.",
-  },
-];
+export const dynamic = "force-dynamic";
 
 const journey = [
   { title: "Who Is Rick", detail: "The guy behind Ketovore Canada", href: "/rick" },
   { title: "Health Issues", detail: "The challenges that started it", href: "/issues" },
   { title: "Daily Log", detail: "The numbers, meals, and movement", href: "/log" },
-  { title: "Blog", detail: "Thoughts, lessons along the journey", href: "/blog" },
+  { title: "Blog", detail: "Thoughts, lessons along the journey", href: "/blogs" },
 ];
 
-export default function Home() {
+export default async function Home({
+  searchParams,
+}: {
+  searchParams: Promise<{ page?: string }>;
+}) {
+  const { page: pageParam } = await searchParams;
+  const page = Math.max(1, Number.parseInt(pageParam ?? "1", 10) || 1);
+  const feed = await getCombinedFeed(page, 20);
+
   return (
     <main className="min-h-screen bg-[#f7f7f7] text-black">
       <SiteHeader active="Daily News & Views" />
@@ -43,22 +49,18 @@ export default function Home() {
                 <h2 className="mt-2 font-[family-name:var(--font-display)] text-[42px] font-extrabold uppercase tracking-[0.03em]">Ketovore Daily News, Views &amp; Video</h2>
               </div>
 
-              <div className="mt-10">
-                {resourceItems.map((item) => (
-                  <article key={item.title} className="group grid gap-5 border-b border-black/15 py-9 sm:grid-cols-[1fr_auto] sm:items-center">
-                    <div>
-                      {item.type ? (
-                        <p className="text-xs font-extrabold uppercase tracking-[0.24em] text-black/45">{item.type} · Ketovore Canada</p>
-                      ) : null}
-                      <h3 className="mt-3 font-[family-name:var(--font-display)] text-2xl font-extrabold leading-tight transition group-hover:text-[#ba0a07] sm:text-3xl">
-                        {item.title}
-                      </h3>
-                      <p className="mt-3 max-w-3xl leading-7 text-black/60">{item.description}</p>
-                    </div>
-                    <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-full border border-black/25 text-xl transition group-hover:border-[#ba0a07] group-hover:bg-[#ba0a07] group-hover:text-white">→</span>
-                  </article>
-                ))}
+              <div className="mt-8 flex items-end justify-between gap-4 border-b border-black/15">
+                <FilterNav />
+                <p className="hidden pb-4 text-xs font-extrabold uppercase tracking-wide text-black/40 sm:block">
+                  {feed.total.toLocaleString("en-CA")} items
+                </p>
               </div>
+
+              <div className="mt-8">
+                <FeedList items={feed.items} />
+              </div>
+
+              <FeedPagination page={feed.page} pageCount={feed.pageCount} basePath="/" />
             </div>
 
             <aside className="space-y-10 bg-[#f0f0f0] p-6">
