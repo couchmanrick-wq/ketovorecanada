@@ -36,6 +36,35 @@ const rowToVideo = (row: VideoRow): AggregatedVideo => ({
   publishedAt: row.published_at,
 });
 
+function siteDb(): D1Database | null {
+  try {
+    const { env } = getCloudflareContext();
+    return (env as unknown as { DB?: D1Database }).DB ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** One aggregated video by its YouTube id, or null. */
+export async function getVideoById(videoId: string): Promise<AggregatedVideo | null> {
+  try {
+    const db = siteDb();
+    if (!db) return null;
+    const row = await db
+      .prepare(
+        `SELECT video_id, channel_key, channel_id, channel_name, title, url,
+                thumbnail_url, description, published_at
+         FROM videos WHERE video_id = ?`,
+      )
+      .bind(videoId)
+      .first<VideoRow>();
+    return row ? rowToVideo(row) : null;
+  } catch (error) {
+    console.error("getVideoById failed", error);
+    return null;
+  }
+}
+
 /**
  * Newest-first page of aggregated YouTube uploads from every channel in the
  * Influencers & Authorities directory. Populated by the ketovorecanada-ingest

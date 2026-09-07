@@ -6,6 +6,7 @@ import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import KetovoreLinksPanel from "@/components/admin/KetovoreLinksPanel";
 import VideosPanel from "@/components/admin/VideosPanel";
+import CommentsPanel from "@/components/admin/CommentsPanel";
 import {
   DayEntry,
   MonthData,
@@ -31,6 +32,7 @@ const navTabs = [
   { id: "daily-log", label: "Daily Log" },
   { id: "resource-links", label: "Resource Links" },
   { id: "videos", label: "Aggregated Videos" },
+  { id: "comments", label: "Comments" },
 ];
 
 export default function Admin() {
@@ -82,6 +84,8 @@ export default function Admin() {
               <KetovoreLinksPanel />
             ) : activeTab === "videos" ? (
               <VideosPanel />
+            ) : activeTab === "comments" ? (
+              <CommentsPanel />
             ) : activeTab === "daily-log" ? (
               <DailyLogPanel />
             ) : activeTab === "today" ? (

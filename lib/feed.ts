@@ -11,9 +11,11 @@ export type FeedItem = {
   source: string;
   title: string;
   summary: string | null;
-  /** External link (video) or internal path (blog) */
+  /** External link (video/news) or internal path (blog) that the title links to */
   href: string;
   external: boolean;
+  /** Internal detail page for this item (has the comments section) */
+  detailHref: string;
   publishedAt: string | null;
   /** Label shown before the source, e.g. "Youtube Account:" */
   sourcePrefix?: string;
@@ -27,8 +29,9 @@ const blogItem = (p: (typeof blogPosts)[number]): FeedItem => ({
   source: "Ketovore Canada",
   title: p.title,
   summary: p.excerpt,
-  href: "/blogs",
+  href: `/blogs/${p.slug}`,
   external: false,
+  detailHref: `/blogs/${p.slug}`,
   publishedAt: p.date,
 });
 
@@ -46,13 +49,14 @@ export async function getNewsFeed(
   return {
     total,
     items: articles.map((a) => ({
-      id: `news:${a.url}`,
+      id: `news:${a.id}`,
       contentType: "news" as const,
       source: a.sourceName,
       title: a.title,
       summary: a.summary,
       href: a.url,
       external: true,
+      detailHref: `/news/${a.id}`,
       publishedAt: a.publishedAt,
     })),
   };
@@ -73,6 +77,7 @@ export async function getVideoFeed(
       summary: v.description,
       href: v.url,
       external: true,
+      detailHref: `/videos/${v.videoId}`,
       publishedAt: v.publishedAt,
       sourcePrefix: "Youtube Account:",
       sourceUrl: `https://www.youtube.com/channel/${v.channelId}`,

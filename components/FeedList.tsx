@@ -19,15 +19,9 @@ function FeedCard({ item }: { item: FeedItem }) {
         {PILL[item.contentType]}
       </span>
 
-      {item.external ? (
-        <a href={item.href} target="_blank" rel="noopener noreferrer" className="group mt-4 block no-underline">
-          <h3 className={titleClass}>{item.title}</h3>
-        </a>
-      ) : (
-        <Link href={item.href} className="group mt-4 block no-underline">
-          <h3 className={titleClass}>{item.title}</h3>
-        </Link>
-      )}
+      <Link href={item.detailHref} className="group mt-4 block no-underline">
+        <h3 className={titleClass}>{item.title}</h3>
+      </Link>
 
       {item.summary ? (
         <p className="mt-3 line-clamp-2 max-w-3xl text-sm leading-6 text-black/55">{item.summary}</p>
@@ -51,6 +45,22 @@ function FeedCard({ item }: { item: FeedItem }) {
         </span>
         {time ? (
           <time dateTime={item.publishedAt ?? undefined}>{time}</time>
+        ) : null}
+      </div>
+
+      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-black/10 pt-3 text-xs font-bold">
+        <Link href={`${item.detailHref}#comments`} className="text-[#ba0a07] no-underline hover:underline">
+          Comments
+        </Link>
+        {item.external ? (
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-black/45 no-underline hover:text-[#ba0a07]"
+          >
+            {item.contentType === "video" ? "Watch on YouTube ↗" : "Read at source ↗"}
+          </a>
         ) : null}
       </div>
     </article>

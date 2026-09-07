@@ -1,6 +1,7 @@
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 
 export type NewsArticle = {
+  id: number;
   url: string;
   sourceName: string;
   title: string;
@@ -10,6 +11,7 @@ export type NewsArticle = {
 };
 
 type ArticleRow = {
+  id: number;
   url: string;
   source_name: string;
   title: string;
@@ -19,6 +21,7 @@ type ArticleRow = {
 };
 
 const rowToArticle = (row: ArticleRow): NewsArticle => ({
+  id: row.id,
   url: row.url,
   sourceName: row.source_name,
   title: row.title,
@@ -26,6 +29,24 @@ const rowToArticle = (row: ArticleRow): NewsArticle => ({
   matchedTerm: row.matched_term,
   publishedAt: row.published_at,
 });
+
+const SELECT_COLS = `id, url, source_name, title, summary, matched_term, published_at`;
+
+export async function getArticleById(id: number): Promise<NewsArticle | null> {
+  try {
+    const { env } = getCloudflareContext();
+    const db = (env as unknown as { DB?: D1Database }).DB;
+    if (!db) return null;
+    const row = await db
+      .prepare(`SELECT ${SELECT_COLS} FROM articles WHERE id = ?`)
+      .bind(id)
+      .first<ArticleRow>();
+    return row ? rowToArticle(row) : null;
+  } catch (error) {
+    console.error("getArticleById failed", error);
+    return null;
+  }
+}
 
 /**
  * Newest-first page of news articles mentioning "ketovore" or "carnivore",
@@ -44,7 +65,7 @@ export async function getNewsArticles(
     const [page, count] = await Promise.all([
       db
         .prepare(
-          `SELECT url, source_name, title, summary, matched_term, published_at
+          `SELECT ${SELECT_COLS}
            FROM articles
            WHERE published_at IS NOT NULL
            ORDER BY published_at DESC
