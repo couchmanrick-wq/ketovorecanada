@@ -18,9 +18,9 @@
   //                          email-gated only once this is set)
   "vars": {
     "ADMIN_USERNAME": "Rick",
-    // Turnstile always-pass TEST key — replace with the real site key once the
-    // widget is created (pair with the TURNSTILE_SECRET_KEY secret).
-    "TURNSTILE_SITE_KEY": "1x00000000000000000000AA",
+    // Turnstile widget for ketovorecanada.com comments (pair with the
+    // TURNSTILE_SECRET_KEY secret).
+    "TURNSTILE_SITE_KEY": "0x4AAAAAAEsEipn5tiLGd5PO",
     "COMMENTS_FROM_EMAIL": "Ketovore Canada <comments@ketovorecanada.com>",
     "SITE_ORIGIN": "https://ketovorecanada.com"
   },
