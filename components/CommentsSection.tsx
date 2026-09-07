@@ -120,7 +120,7 @@ export default function CommentsSection({
         onLoad={() => setScriptReady(true)}
       />
       <h2 className="font-[family-name:var(--font-display)] text-2xl font-extrabold uppercase tracking-[0.02em]">
-        Comments{comments.length ? ` (${comments.length})` : ""}
+        {comments.length} Comment{comments.length === 1 ? "" : "s"} - Add Yours!
       </h2>
 
       {justCommented ? (
