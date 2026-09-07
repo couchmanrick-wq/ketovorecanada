@@ -18,7 +18,9 @@ export const FILTER_ITEMS: FilterItem[] = [
 export default function FilterNav({ items = FILTER_ITEMS }: { items?: FilterItem[] }) {
   const pathname = usePathname();
   const router = useRouter();
-  const active = items.find((item) => item.href === pathname);
+  const active = items.find(
+    (item) => pathname === item.href || pathname.startsWith(`${item.href}/`),
+  );
 
   return (
     <div className="min-w-0 flex-1">
@@ -50,9 +52,9 @@ export default function FilterNav({ items = FILTER_ITEMS }: { items?: FilterItem
             href={item.href}
             aria-current={item === active ? "page" : undefined}
             className={[
-              "no-underline shrink-0 border-b-2 pb-4 text-xs font-extrabold uppercase tracking-[0.14em] transition",
+              "no-underline shrink-0 border-b-[3px] px-1 pb-3.5 text-xs font-extrabold uppercase tracking-[0.14em] transition",
               item === active
-                ? "border-[#ba0a07] text-black"
+                ? "border-[#ba0a07] text-[#ba0a07]"
                 : "border-transparent text-black/45 hover:text-[#ba0a07]",
             ].join(" ")}
           >
