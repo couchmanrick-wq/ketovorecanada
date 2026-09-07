@@ -5,6 +5,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import KetovoreLinksPanel from "@/components/admin/KetovoreLinksPanel";
+import VideosPanel from "@/components/admin/VideosPanel";
 import {
   DayEntry,
   MonthData,
@@ -29,6 +30,7 @@ const navTabs = [
   { id: "crm", label: "CRM" },
   { id: "daily-log", label: "Daily Log" },
   { id: "resource-links", label: "Resource Links" },
+  { id: "videos", label: "Aggregated Videos" },
 ];
 
 export default function Admin() {
@@ -78,6 +80,8 @@ export default function Admin() {
           <div className="mt-8">
             {activeTab === "resource-links" ? (
               <KetovoreLinksPanel />
+            ) : activeTab === "videos" ? (
+              <VideosPanel />
             ) : activeTab === "daily-log" ? (
               <DailyLogPanel />
             ) : activeTab === "today" ? (

@@ -22,6 +22,15 @@
       "id": "0b5da19563274372998336dee628e1ae"
     }
   ],
+  // Shared with the ketovorecanada-ingest Worker, which populates the `videos`
+  // table from YouTube RSS on a cron. Read-only here.
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ketovore-content",
+      "database_id": "d4322381-e987-41fc-b76d-a1c97cac52e0"
+    }
+  ],
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"

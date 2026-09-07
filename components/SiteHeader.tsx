@@ -7,6 +7,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Daily News & Views", href: "/#resources" },
   { label: "Influencers/Authorities Accts to Follow", href: "/ketovore-links" },
+  { label: "Latest Videos", href: "/videos" },
   { label: "About", href: "/rick" },
 ];
 
