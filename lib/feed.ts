@@ -1,4 +1,5 @@
 import { blogPosts } from "@/lib/blog";
+import { getNewsArticles } from "@/lib/news";
 import { getAggregatedVideos } from "@/lib/videos";
 
 export type FeedContentType = "news" | "video" | "blog";
@@ -37,6 +38,26 @@ export function getBlogFeed(): FeedItem[] {
     .map(blogItem);
 }
 
+export async function getNewsFeed(
+  limit = 40,
+  offset = 0,
+): Promise<{ items: FeedItem[]; total: number }> {
+  const { articles, total } = await getNewsArticles(limit, offset);
+  return {
+    total,
+    items: articles.map((a) => ({
+      id: `news:${a.url}`,
+      contentType: "news" as const,
+      source: a.sourceName,
+      title: a.title,
+      summary: a.summary,
+      href: a.url,
+      external: true,
+      publishedAt: a.publishedAt,
+    })),
+  };
+}
+
 export async function getVideoFeed(
   limit = 30,
   offset = 0,
@@ -67,11 +88,12 @@ export async function getCombinedFeed(
   page = 1,
   pageSize = 20,
 ): Promise<{ items: FeedItem[]; page: number; pageCount: number; total: number }> {
-  // Pull a generous window of videos to merge against; blog volume is tiny.
-  const { items: videoItems, total: videoTotal } = await getVideoFeed(500, 0);
-  const all = [...videoItems, ...getBlogFeed()].sort(byPublishedDesc);
+  // Pull a generous window of each feed to merge; blog volume is tiny.
+  const [{ items: videoItems, total: videoTotal }, { items: newsItems, total: newsTotal }] =
+    await Promise.all([getVideoFeed(500, 0), getNewsFeed(200, 0)]);
+  const all = [...videoItems, ...newsItems, ...getBlogFeed()].sort(byPublishedDesc);
 
-  const total = videoTotal + blogPosts.length;
+  const total = videoTotal + newsTotal + blogPosts.length;
   const pageCount = Math.max(1, Math.ceil(all.length / pageSize));
   const current = Math.min(Math.max(1, page), pageCount);
   const start = (current - 1) * pageSize;
