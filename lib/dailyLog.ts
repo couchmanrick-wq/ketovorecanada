@@ -8,7 +8,7 @@ export type MonthMeta = {
 };
 
 export const months: MonthMeta[] = [
-  { id: "2026-08", label: "Aug 26", year: 2026, month: 7, days: [29] },
+  { id: "2026-08", label: "Aug 26", year: 2026, month: 7, days: [29, 30, 31] },
   { id: "2026-09", label: "Sept 26", year: 2026, month: 8 },
   { id: "2026-10", label: "Oct 26", year: 2026, month: 9 },
   { id: "2026-11", label: "Nov 26", year: 2026, month: 10 },
