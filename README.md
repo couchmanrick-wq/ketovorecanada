@@ -1,5 +1,7 @@
 # Ketovore Canada
 
+Maintained by Rick Couchman.
+
 A polished Next.js site for Ketovore Canada with sections for the introductory message, Rick Couchman, resources, updates, the journey, and a daily log concept.
 
 ## Development
